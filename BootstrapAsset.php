@@ -17,6 +17,14 @@ class BootstrapAsset extends AssetBundle
 {
 	public $sourcePath = '@vendor/twbs/bootstrap/dist';
 	public $css = [
-		'css/bootstrap.css',
+		'css/bootstrap.min.css',
+		//uncomment below line to involve bootstrap theme in your application
+		//'css/bootstrap-theme.min.css',  
 	];
+	public $js = [
+        	'js/bootstrap.min.js'
+    	];
+    	public $depends = [
+        	'yii\web\JqueryAsset',
+    	];
 }
