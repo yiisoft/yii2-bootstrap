@@ -108,7 +108,6 @@ class ButtonDropdown extends Widget
                 'view' => $this->getView(),
             ]);
         } else {
-            $label .= ' <span class="caret"></span>';
             $options = $this->options;
             if (!isset($options['href'])) {
                 $options['href'] = '#';
