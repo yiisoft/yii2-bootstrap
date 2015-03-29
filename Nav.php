@@ -99,6 +99,16 @@ class Nav extends Widget
      * Defaults to `null` which means `<b class="caret"></b>` will be used. To disable the caret, set this property to be an empty string.
      */
     public $dropDownCaret;
+    /**
+     * @var string the CSS class that will be assigned to the menu element.
+     * Defaults to 'nav'.
+     */
+    public $menuCssClass = 'nav';
+    /**
+     * @var string the CSS class that will be assigned to each item element.
+     * Defaults to null, meaning no CSS class will be assigned.
+     */
+    public $itemCssClass = null;
 
 
     /**
@@ -116,7 +126,7 @@ class Nav extends Widget
         if ($this->dropDownCaret === null) {
             $this->dropDownCaret = Html::tag('b', '', ['class' => 'caret']);
         }
-        Html::addCssClass($this->options, 'nav');
+        Html::addCssClass($this->options, $this->menuCssClass);
     }
 
     /**
@@ -188,6 +198,10 @@ class Nav extends Widget
 
         if ($this->activateItems && $active) {
             Html::addCssClass($options, 'active');
+        }
+        
+        if ($this->itemCssClass !== null) {
+            Html::addCssClass($options, $this->itemCssClass);
         }
 
         return Html::tag('li', Html::a($label, $url, $linkOptions) . $items, $options);
