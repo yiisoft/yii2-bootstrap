@@ -43,6 +43,7 @@ class ButtonGroup extends Widget
      * which can be specified as a string or an array of the following structure:
      *
      * - label: string, required, the button label.
+	 * - visible: boolean, optional, whether this button item is visible. Defaults to true.
      * - options: array, optional, the HTML attributes of the button.
      */
     public $buttons = [];
@@ -80,6 +81,9 @@ class ButtonGroup extends Widget
         $buttons = [];
         foreach ($this->buttons as $button) {
             if (is_array($button)) {
+				if (isset($button['visible']) && !$button['visible']) {
+					continue;
+				}	
                 $button['view'] = $this->getView();
                 if (!isset($button['encodeLabel'])) {
                     $button['encodeLabel'] = $this->encodeLabels;
