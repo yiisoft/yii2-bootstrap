@@ -1,8 +1,8 @@
 Yii widgets
 ===========
 
-Most complex bootstrap components are wrapped into Yii widgets to allow more robust syntax and integrate with
-framework features. All widgets belong to `\yii\bootstrap` namespace:
+A maioria dos componentes complexos do bootstrap são envolvidos em widgets Yii para permitir uma sintaxe mais robusta e integrar-se com
+características estruturais do framework. Todos widgets pertencem ao namespace `\yii\bootstrap`:
 
 - [[yii\bootstrap\ActiveForm|ActiveForm]]
 - [[yii\bootstrap\Alert|Alert]]
