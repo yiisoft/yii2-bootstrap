@@ -1,10 +1,11 @@
-Using the .less files of Bootstrap directly
+Usando arquivos .less diretamente do Bootstrap
 ===========================================
 
-If you want to include the [Bootstrap css directly in your less files](http://getbootstrap.com/getting-started/#customizing)
-you may need to disable the original bootstrap css files to be loaded.
-You can do this by setting the css property of the [[yii\bootstrap\BootstrapAsset|BootstrapAsset]] to be empty.
-For this you need to configure the `assetManager` [application component](https://github.com/yiisoft/yii2/blob/master/docs/guide/structure-application-components.md) as follows:
+Se você quiser incluir o [css do Bootstrap diretamente em seus arquivos less] (http://getbootstrap.com/getting-started/#customizing)
+talvez você precise desativar os arquivos css do Bootstrap originais que são carregados.
+Você pode fazer isso definindo a propriedade css do [[yii \ inicialização \ BootstrapAsset | BootstrapAsset]] e deixe estar vazio.
+Para isso, você precisa configurar o `assetManager` [application component](https://github.com/yiisoft/yii2/blob/master/docs/guide/structure-application-components.md) 
+do seguinte modo:
 
 ```php
     'assetManager' => [
