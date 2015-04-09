@@ -1,20 +1,20 @@
 Installation
 ============
 
-## Getting Composer package
+## Instalando através do composer
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+A maneira recomendada para instalar esta extensão é através do [composer](http://getcomposer.org/download/).
 
-Either run
+Então rode
 
 ```
 php composer.phar require --prefer-dist yiisoft/yii2-bootstrap
 ```
 
-or add
+Ou Adicione
 
 ```
 "yiisoft/yii2-bootstrap": "~2.0.0"
 ```
 
-to the require section of your `composer.json` file.
+na sessão de requirimentos do seu arquivo `composer.json`.
