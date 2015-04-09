@@ -1,10 +1,10 @@
-Basic Usage
+Uso Básico
 ===========
 
-Yii doesn't wrap the bootstrap basics into PHP code since HTML is very simple by itself in this case. You can find details
-about using the basics at [bootstrap documentation website](http://getbootstrap.com/css/). Still Yii provides a
-convenient way to include bootstrap assets in your pages with a single line added to `AppAsset.php` located in your
-`@app/assets` directory:
+O Yii Não registra os básico componentes básicos do bootstrap em código PHP visto que esse HTML é muito simples, por si só. 
+Você pode encontrar detalhes sobre como usar o básico no [site documentação do bootstrap] (http://getbootstrap.com/css/). O Yii ainda fornece uma
+forma conveniente para incluir assets de bootstrap em suas páginas com uma única linha adicionado ao arquivo `AppAsset.php` localizado no seu 
+diretório `@app/assets`:
 
 ```php
 public $depends = [
@@ -13,5 +13,5 @@ public $depends = [
 ];
 ```
 
-Using bootstrap through Yii asset manager allows you to minimize its resources and combine with your own resources when
-needed.
+Usando bootstrap através Yii assets lhe permite minimizar os seus recursos/fontes e combinar com seus próprios recursos/fontes quando
+necessário.
