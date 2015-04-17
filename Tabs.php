@@ -58,6 +58,7 @@ class Tabs extends Widget
      * tab with the following structure:
      *
      * - label: string, required, the tab header label.
+     * - icon: string, optional, the icon for the tab header label
      * - encode: boolean, optional, whether this label should be HTML-encoded. This param will override
      *   global `$this->encodeLabels` param.
      * - headerOptions: array, optional, the HTML attributes of the tab header.
@@ -146,7 +147,8 @@ class Tabs extends Widget
                 throw new InvalidConfigException("The 'label' option is required.");
             }
             $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
-            $label = $encodeLabel ? Html::encode($item['label']) : $item['label'];
+            $icon = isset($item['icon']) ? $item['icon'] : '';
+            $label = $this->label($icon, $item['label'], $encodeLabel);
             $headerOptions = array_merge($this->headerOptions, ArrayHelper::getValue($item, 'headerOptions', []));
             $linkOptions = array_merge($this->linkOptions, ArrayHelper::getValue($item, 'linkOptions', []));
 

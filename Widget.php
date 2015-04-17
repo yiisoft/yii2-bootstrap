@@ -8,6 +8,7 @@
 namespace yii\bootstrap;
 
 use Yii;
+use yii\helpers\Html;
 use yii\helpers\Json;
 
 /**
@@ -88,5 +89,31 @@ class Widget extends \yii\base\Widget
             }
             $this->getView()->registerJs(implode("\n", $js));
         }
+    }
+
+    /**
+     * Composes HTML displaying bootstrap glyphicon matching given name.
+     * If icon name is empty empty string will be returned.
+     * @param string $name icon short name.
+     * @return string icon HTML.
+     */
+    protected function icon($name)
+    {
+        if (empty($name)) {
+            return '';
+        }
+        return Html::tag('span', '', ['class' => 'glyphicon glyphicon-' . $name]) . ' ';
+    }
+
+    /**
+     * Composes label with icon HTML.
+     * @param string $icon icon name.
+     * @param string $label label.
+     * @param boolean $encodeLabel whether to encode label.
+     * @return string label HTML.
+     */
+    protected function label($icon, $label, $encodeLabel = true)
+    {
+        return $this->icon($icon) . ($encodeLabel ? Html::encode($label) : $label);
     }
 }

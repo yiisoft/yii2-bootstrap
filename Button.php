@@ -38,6 +38,10 @@ class Button extends Widget
      * @var boolean whether the label should be HTML-encoded.
      */
     public $encodeLabel = true;
+    /**
+     * @var string icon to be added before the label.
+     */
+    public $icon;
 
 
     /**
@@ -57,6 +61,6 @@ class Button extends Widget
     public function run()
     {
         $this->registerPlugin('button');
-        return Html::tag($this->tagName, $this->encodeLabel ? Html::encode($this->label) : $this->label, $this->options);
+        return Html::tag($this->tagName, $this->label($this->icon, $this->label, $this->encodeLabel), $this->options);
     }
 }

@@ -39,6 +39,10 @@ class ButtonDropdown extends Widget
      */
     public $label = 'Button';
     /**
+     * @var string icon to be added before the button label.
+     */
+    public $icon;
+    /**
      * @var array the HTML attributes for the container tag. The following special options are recognized:
      *
      * - tag: string, defaults to "div", the name of the container tag.
@@ -95,10 +99,7 @@ class ButtonDropdown extends Widget
     protected function renderButton()
     {
         Html::addCssClass($this->options, 'btn');
-        $label = $this->label;
-        if ($this->encodeLabel) {
-            $label = Html::encode($label);
-        }
+        $label = $this->label($this->icon, $this->label, $this->encodeLabel);
         if ($this->split) {
             $options = $this->options;
             $this->options['data-toggle'] = 'dropdown';
