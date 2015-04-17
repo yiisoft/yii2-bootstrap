@@ -8,7 +8,6 @@
 namespace yii\bootstrap;
 
 use Yii;
-use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
@@ -149,19 +148,16 @@ class Nav extends Widget
      * Renders a widget's item.
      * @param string|array $item the item to render.
      * @return string the rendering result.
-     * @throws InvalidConfigException
      */
     public function renderItem($item)
     {
         if (is_string($item)) {
             return $item;
         }
-        if (!isset($item['label'])) {
-            throw new InvalidConfigException("The 'label' option is required.");
+        if (!isset($item['encode'])) {
+            $item['encode'] = $this->encodeLabels;
         }
-        $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
-        $icon = isset($item['icon']) ? $item['icon'] : '';
-        $label = $this->label($icon, $item['label'], $encodeLabel);
+        $label = $this->label($item);
         $options = ArrayHelper::getValue($item, 'options', []);
         $items = ArrayHelper::getValue($item, 'items');
         $url = ArrayHelper::getValue($item, 'url', '#');

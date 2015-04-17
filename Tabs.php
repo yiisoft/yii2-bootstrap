@@ -143,12 +143,10 @@ class Tabs extends Widget
         }
 
         foreach ($this->items as $n => $item) {
-            if (!array_key_exists('label', $item)) {
-                throw new InvalidConfigException("The 'label' option is required.");
+            if (!isset($item['encode'])) {
+                $item['encode'] = $this->encodeLabels;
             }
-            $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
-            $icon = isset($item['icon']) ? $item['icon'] : '';
-            $label = $this->label($icon, $item['label'], $encodeLabel);
+            $label = $this->label($item);
             $headerOptions = array_merge($this->headerOptions, ArrayHelper::getValue($item, 'headerOptions', []));
             $linkOptions = array_merge($this->linkOptions, ArrayHelper::getValue($item, 'linkOptions', []));
 

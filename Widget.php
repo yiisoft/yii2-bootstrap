@@ -8,6 +8,7 @@
 namespace yii\bootstrap;
 
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\helpers\Html;
 use yii\helpers\Json;
 
@@ -93,27 +94,37 @@ class Widget extends \yii\base\Widget
 
     /**
      * Composes HTML displaying bootstrap glyphicon matching given name.
-     * If icon name is empty empty string will be returned.
      * @param string $name icon short name.
      * @return string icon HTML.
+     * @since 2.0.4
      */
     protected function icon($name)
     {
-        if (empty($name)) {
-            return '';
-        }
-        return Html::tag('span', '', ['class' => 'glyphicon glyphicon-' . $name]) . ' ';
+        return Html::tag('span', '', ['class' => 'glyphicon glyphicon-' . $name]);
     }
 
     /**
      * Composes label with icon HTML.
-     * @param string $icon icon name.
-     * @param string $label label.
-     * @param boolean $encodeLabel whether to encode label.
+     * @param array $params label parameters:
+     * - label: string, optional, the label text
+     * - icon: string, optional, the label icon name
+     * - encode: boolean, optional, whether the label text should be HTML-encoded
+     * @throws InvalidConfigException if no label or icon option is specified.
      * @return string label HTML.
+     * @since 2.0.4
      */
-    protected function label($icon, $label, $encodeLabel = true)
+    protected function label(array $params)
     {
-        return $this->icon($icon) . ($encodeLabel ? Html::encode($label) : $label);
+        if (!isset($params['icon']) && !isset($params['label'])) {
+            throw new InvalidConfigException("The 'label' or 'icon' option is required.");
+        }
+        $label = '';
+        if (isset($params['label'])) {
+            $label .= (!isset($params['encode']) || $params['encode']) ? Html::encode($params['label']) : $params['label'];
+        }
+        if (isset($params['icon'])) {
+            $label = $this->icon($params['icon']) . ' ' .$label;
+        }
+        return $label;
     }
 }

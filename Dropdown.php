@@ -7,10 +7,8 @@
 
 namespace yii\bootstrap;
 
-use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 /**
  * Dropdown renders a Bootstrap dropdown menu component.
@@ -84,12 +82,11 @@ class Dropdown extends Widget
      * @param array $items the menu items to be rendered
      * @param array $options the container HTML attributes
      * @return string the rendering result.
-     * @throws InvalidConfigException if the label option is not specified in one of the items.
      */
     protected function renderItems($items, $options = [])
     {
         $lines = [];
-        foreach ($items as $i => $item) {
+        foreach ($items as $item) {
             if (isset($item['visible']) && !$item['visible']) {
                 continue;
             }
@@ -97,12 +94,10 @@ class Dropdown extends Widget
                 $lines[] = $item;
                 continue;
             }
-            if (!array_key_exists('label', $item)) {
-                throw new InvalidConfigException("The 'label' option is required.");
+            if (!isset($item['encode'])) {
+                $item['encode'] = $this->encodeLabels;
             }
-            $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
-            $icon = isset($item['icon']) ? $item['icon'] : '';
-            $label = $this->label($icon, $item['label'], $encodeLabel);
+            $label = $this->label($item);
             $itemOptions = ArrayHelper::getValue($item, 'options', []);
             $linkOptions = ArrayHelper::getValue($item, 'linkOptions', []);
             $linkOptions['tabindex'] = '-1';

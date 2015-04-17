@@ -99,7 +99,11 @@ class ButtonDropdown extends Widget
     protected function renderButton()
     {
         Html::addCssClass($this->options, 'btn');
-        $label = $this->label($this->icon, $this->label, $this->encodeLabel);
+        $label = $this->label([
+            'icon' => $this->icon,
+            'label' => $this->label,
+            'encode' => $this->encodeLabel
+        ]);
         if ($this->split) {
             $options = $this->options;
             $this->options['data-toggle'] = 'dropdown';

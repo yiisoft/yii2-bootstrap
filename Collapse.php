@@ -122,10 +122,11 @@ class Collapse extends Widget
             $options['id'] = $id;
             Html::addCssClass($options, 'panel-collapse collapse');
 
-            $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
-            if ($encodeLabel) {
-                $header = Html::encode($header);
+            $item['label'] = $header;
+            if (!isset($item['encode'])) {
+                $item['encode'] = $this->encodeLabels;
             }
+            $header = $this->label($item);
 
             $headerToggle = Html::a($header, '#' . $id, [
                     'class' => 'collapse-toggle',
