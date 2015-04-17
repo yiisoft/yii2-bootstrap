@@ -93,14 +93,19 @@ class Widget extends \yii\base\Widget
     }
 
     /**
-     * Composes HTML displaying bootstrap glyphicon matching given name.
-     * @param string $name icon short name.
+     * Composes icon HTML.
+     * Icon can be specified by short name, which will be used to compose glyphicon HTML.
+     * If icon value already contains HTML it will be used as its value.
+     * @param string $icon icon short name or HTML.
      * @return string icon HTML.
      * @since 2.0.4
      */
-    protected function icon($name)
+    protected function icon($icon)
     {
-        return Html::tag('span', '', ['class' => 'glyphicon glyphicon-' . $name]);
+        if (strpos($icon, '<') !== false) {
+            return $icon;
+        }
+        return Html::tag('span', '', ['class' => 'glyphicon glyphicon-' . $icon]);
     }
 
     /**
