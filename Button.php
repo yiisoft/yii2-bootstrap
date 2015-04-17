@@ -33,11 +33,15 @@ class Button extends Widget
     /**
      * @var string the button label
      */
-    public $label = 'Button';
+    public $label = '';
     /**
      * @var boolean whether the label should be HTML-encoded.
      */
     public $encodeLabel = true;
+    /**
+     * @var string the button icon
+     */
+    public $icon;
 
 
     /**
@@ -57,6 +61,10 @@ class Button extends Widget
     public function run()
     {
         $this->registerPlugin('button');
-        return Html::tag($this->tagName, $this->encodeLabel ? Html::encode($this->label) : $this->label, $this->options);
+        $label = $this->encodeLabel ? Html::encode($this->label) : $this->label;
+        if (!empty($this->icon)) {
+            $label = $this->icon . ' ' . $label;
+        }
+        return Html::tag($this->tagName, $label, $this->options);
     }
 }
