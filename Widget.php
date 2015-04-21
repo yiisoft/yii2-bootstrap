@@ -9,6 +9,7 @@ namespace yii\bootstrap;
 
 use Yii;
 use yii\base\InvalidConfigException;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
 
@@ -94,14 +95,20 @@ class Widget extends \yii\base\Widget
 
     /**
      * Composes icon HTML.
-     * Icon can be specified by short name, which will be used to compose glyphicon HTML.
-     * If icon value already contains HTML it will be used as its value.
+     * Icon specification can be:
+     * - string short name, which will be used to compose glyphicon HTML, for example: 'star'
+     * - string HTML content, which will be used as it is, for example: '<i class="my-icon"></i>'
+     * - array configuration for the tag, which should compose the icon, for example: `['tag' => 'i', 'class' => 'my-icon']`
      * @param string $icon icon short name or HTML.
      * @return string icon HTML.
      * @since 2.0.4
      */
     protected function icon($icon)
     {
+        if (is_array($icon)) {
+            $tag = ArrayHelper::remove($icon, 'tag', 'span');
+            return Html::tag($tag, '', $icon);
+        }
         if (strpos($icon, '<') !== false) {
             return $icon;
         }
@@ -112,7 +119,7 @@ class Widget extends \yii\base\Widget
      * Composes label with icon HTML.
      * @param array $params label parameters:
      * - label: string, optional, the label text
-     * - icon: string, optional, the label icon name
+     * - icon: string, optional, the label icon specification, see [[icon()]] for details
      * - encode: boolean, optional, whether the label text should be HTML-encoded
      * @throws InvalidConfigException if no label or icon option is specified.
      * @return string label HTML.
