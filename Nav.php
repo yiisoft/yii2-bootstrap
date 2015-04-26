@@ -59,6 +59,7 @@ class Nav extends Widget
      * - linkOptions: array, optional, the HTML attributes of the item's link.
      * - options: array, optional, the HTML attributes of the item container (LI).
      * - active: boolean, optional, whether the item should be on active state or not.
+     * - inline: boolean, optional, whether the item should be rendered whithout as a [[Dropdown]].
      * - items: array|string, optional, the configuration array for creating a [[Dropdown]] widget,
      *   or a string representing the dropdown menu. Note that Bootstrap does not support sub-dropdown menus.
      *
@@ -129,13 +130,18 @@ class Nav extends Widget
     public function run()
     {
         BootstrapAsset::register($this->getView());
-        return $this->renderItems($this->items, $this->options);
+        return $this->renderItems();
     }
 
     /**
      * Renders widget items.
      */
-    public function renderItems($items, $options = [])
+    public function renderItems()
+    {
+        return $this->renderItemsInternals($this->items, $this->options);
+    }
+
+    protected function renderItemsInternals($items, $options = [])
     {
         $rederedItems = [];
         foreach ($items as $i => $item) {
@@ -168,6 +174,7 @@ class Nav extends Widget
         $items = ArrayHelper::getValue($item, 'items');
         $url = ArrayHelper::getValue($item, 'url', '#');
         $linkOptions = ArrayHelper::getValue($item, 'linkOptions', []);
+        $asDropdown = isset($item['inline']) ? !$item['inline'] : $this->asDropdown;
 
         if (isset($item['active'])) {
             $active = ArrayHelper::remove($item, 'active', false);
@@ -176,7 +183,7 @@ class Nav extends Widget
         }
 
         if ($items !== null) {
-            if ($this->asDropdown) {
+            if ($asDropdown) {
                 $linkOptions['data-toggle'] = 'dropdown';
                 Html::addCssClass($options, 'dropdown');
                 Html::addCssClass($linkOptions, 'dropdown-toggle');
@@ -188,10 +195,10 @@ class Nav extends Widget
                 if ($this->activateItems) {
                     $items = $this->isChildActive($items, $active);
                 }
-                if ($this->asDropdown) {
+                if ($asDropdown) {
                     $items = $this->renderDropdown($items, $item);
                 } else {
-                    $items = $this->renderItems($items);
+                    $items = $this->renderItemsInternals($items);
                 }
             }
         }
