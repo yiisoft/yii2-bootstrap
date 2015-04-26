@@ -66,6 +66,10 @@ class Nav extends Widget
      */
     public $items = [];
     /**
+     * @var boolean whether the nav subitems should be a [[Dropdown]] widget.
+     */
+    public $asDropdown = true;
+    /**
      * @var boolean whether the nav items labels should be HTML-encoded.
      */
     public $encodeLabels = true;
@@ -125,23 +129,23 @@ class Nav extends Widget
     public function run()
     {
         BootstrapAsset::register($this->getView());
-        return $this->renderItems();
+        return $this->renderItems($this->items, $this->options);
     }
 
     /**
      * Renders widget items.
      */
-    public function renderItems()
+    public function renderItems($items, $options = [])
     {
-        $items = [];
-        foreach ($this->items as $i => $item) {
+        $rederedItems = [];
+        foreach ($items as $i => $item) {
             if (isset($item['visible']) && !$item['visible']) {
                 continue;
             }
-            $items[] = $this->renderItem($item);
+            $rederedItems[] = $this->renderItem($item);
         }
 
-        return Html::tag('ul', implode("\n", $items), $this->options);
+        return Html::tag('ul', implode("\n", $rederedItems), $options);
     }
 
     /**
@@ -172,17 +176,23 @@ class Nav extends Widget
         }
 
         if ($items !== null) {
-            $linkOptions['data-toggle'] = 'dropdown';
-            Html::addCssClass($options, 'dropdown');
-            Html::addCssClass($linkOptions, 'dropdown-toggle');
-            if ($this->dropDownCaret !== '') {
-                $label .= ' ' . $this->dropDownCaret;
+            if ($this->asDropdown) {
+                $linkOptions['data-toggle'] = 'dropdown';
+                Html::addCssClass($options, 'dropdown');
+                Html::addCssClass($linkOptions, 'dropdown-toggle');
+                if ($this->dropDownCaret !== '') {
+                    $label .= ' ' . $this->dropDownCaret;
+                }
             }
             if (is_array($items)) {
                 if ($this->activateItems) {
                     $items = $this->isChildActive($items, $active);
                 }
-                $items = $this->renderDropdown($items, $item);
+                if ($this->asDropdown) {
+                    $items = $this->renderDropdown($items, $item);
+                } else {
+                    $items = $this->renderItems($items);
+                }
             }
         }
 
