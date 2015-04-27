@@ -69,7 +69,7 @@ class Nav extends Widget
     /**
      * @var boolean whether the nav subitems should be a [[Dropdown]] widget.
      */
-    public $asDropdown = true;
+    public $useDropdown = true;
     /**
      * @var boolean whether the nav items labels should be HTML-encoded.
      */
@@ -174,7 +174,7 @@ class Nav extends Widget
         $items = ArrayHelper::getValue($item, 'items');
         $url = ArrayHelper::getValue($item, 'url', '#');
         $linkOptions = ArrayHelper::getValue($item, 'linkOptions', []);
-        $dropdown = isset($item['dropdown']) ? $item['dropdown'] : $this->asDropdown;
+        $dropdown = isset($item['dropdown']) ? $item['dropdown'] : $this->useDropdown;
 
         if (isset($item['active'])) {
             $active = ArrayHelper::remove($item, 'active', false);
