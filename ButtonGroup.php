@@ -49,6 +49,7 @@ class ButtonGroup extends Widget
      * which can be specified as a string or an array of the following structure:
      *
      * - label: string, required, the button label.
+     * - icon: string, optional, the button label icon.
      * - options: array, optional, the HTML attributes of the button.
      * - visible: boolean, optional, whether this button is visible. Defaults to true.
      */

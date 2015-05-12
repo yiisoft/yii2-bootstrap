@@ -8,6 +8,9 @@
 namespace yii\bootstrap;
 
 use Yii;
+use yii\base\InvalidConfigException;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\helpers\Json;
 
 /**
@@ -88,5 +91,52 @@ class Widget extends \yii\base\Widget
             }
             $this->getView()->registerJs(implode("\n", $js));
         }
+    }
+
+    /**
+     * Composes icon HTML.
+     * Icon specification can be:
+     * - string short name, which will be used to compose glyphicon HTML, for example: 'star'
+     * - string HTML content, which will be used as it is, for example: '<i class="my-icon"></i>'
+     * - array configuration for the tag, which should compose the icon, for example: `['tag' => 'i', 'class' => 'my-icon']`
+     * @param string $icon icon short name or HTML.
+     * @return string icon HTML.
+     * @since 2.0.4
+     */
+    protected function icon($icon)
+    {
+        if (is_array($icon)) {
+            $tag = ArrayHelper::remove($icon, 'tag', 'span');
+            return Html::tag($tag, '', $icon);
+        }
+        if (strpos($icon, '<') !== false) {
+            return $icon;
+        }
+        return Html::tag('span', '', ['class' => 'glyphicon glyphicon-' . $icon]);
+    }
+
+    /**
+     * Composes label with icon HTML.
+     * @param array $params label parameters:
+     * - label: string, optional, the label text
+     * - icon: string, optional, the label icon specification, see [[icon()]] for details
+     * - encode: boolean, optional, whether the label text should be HTML-encoded
+     * @throws InvalidConfigException if no label or icon option is specified.
+     * @return string label HTML.
+     * @since 2.0.4
+     */
+    protected function label(array $params)
+    {
+        if (!isset($params['icon']) && !isset($params['label'])) {
+            throw new InvalidConfigException("The 'label' or 'icon' option is required.");
+        }
+        $label = '';
+        if (isset($params['label'])) {
+            $label .= (!isset($params['encode']) || $params['encode']) ? Html::encode($params['label']) : $params['label'];
+        }
+        if (isset($params['icon'])) {
+            $label = $this->icon($params['icon']) . ' ' .$label;
+        }
+        return $label;
     }
 }

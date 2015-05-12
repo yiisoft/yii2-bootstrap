@@ -8,7 +8,6 @@
 namespace yii\bootstrap;
 
 use Yii;
-use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
@@ -54,6 +53,7 @@ class Nav extends Widget
      * menu item which can be either a string or an array with the following structure:
      *
      * - label: string, required, the nav item label.
+     * - icon: string, optional, the nav item label icon.
      * - url: optional, the item's URL. Defaults to "#".
      * - visible: boolean, optional, whether this menu item is visible. Defaults to true.
      * - linkOptions: array, optional, the HTML attributes of the item's link.
@@ -148,18 +148,16 @@ class Nav extends Widget
      * Renders a widget's item.
      * @param string|array $item the item to render.
      * @return string the rendering result.
-     * @throws InvalidConfigException
      */
     public function renderItem($item)
     {
         if (is_string($item)) {
             return $item;
         }
-        if (!isset($item['label'])) {
-            throw new InvalidConfigException("The 'label' option is required.");
+        if (!isset($item['encode'])) {
+            $item['encode'] = $this->encodeLabels;
         }
-        $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
-        $label = $encodeLabel ? Html::encode($item['label']) : $item['label'];
+        $label = $this->label($item);
         $options = ArrayHelper::getValue($item, 'options', []);
         $items = ArrayHelper::getValue($item, 'items');
         $url = ArrayHelper::getValue($item, 'url', '#');
