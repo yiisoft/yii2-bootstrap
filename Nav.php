@@ -63,12 +63,17 @@ class Nav extends Widget
      * - linkOptions: array, optional, the HTML attributes of the item's link.
      * - options: array, optional, the HTML attributes of the item container (LI).
      * - active: boolean, optional, whether the item should be on active state or not.
+     * - dropdown: boolean, optional, whether the item should be rendered as a [[Dropdown]].
      * - items: array|string, optional, the configuration array for creating a [[Dropdown]] widget,
      *   or a string representing the dropdown menu. Note that Bootstrap does not support sub-dropdown menus.
      *
      * If a menu item is a string, it will be rendered directly without HTML encoding.
      */
     public $items = [];
+    /**
+     * @var boolean whether the nav subitems should be a [[Dropdown]] widget.
+     */
+    public $useDropdown = true;
     /**
      * @var boolean whether the nav items labels should be HTML-encoded.
      */
@@ -137,15 +142,20 @@ class Nav extends Widget
      */
     public function renderItems()
     {
-        $items = [];
-        foreach ($this->items as $i => $item) {
+        return $this->renderItemsInternals($this->items, $this->options);
+    }
+
+    protected function renderItemsInternals($items, $options = [])
+    {
+        $rederedItems = [];
+        foreach ($items as $i => $item) {
             if (isset($item['visible']) && !$item['visible']) {
                 continue;
             }
-            $items[] = $this->renderItem($item);
+            $rederedItems[] = $this->renderItem($item);
         }
 
-        return Html::tag('ul', implode("\n", $items), $this->options);
+        return Html::tag('ul', implode("\n", $rederedItems), $options);
     }
 
     /**
@@ -168,6 +178,7 @@ class Nav extends Widget
         $items = ArrayHelper::getValue($item, 'items');
         $url = ArrayHelper::getValue($item, 'url', '#');
         $linkOptions = ArrayHelper::getValue($item, 'linkOptions', []);
+        $dropdown = isset($item['dropdown']) ? $item['dropdown'] : $this->useDropdown;
 
         if (isset($item['active'])) {
             $active = ArrayHelper::remove($item, 'active', false);
@@ -176,17 +187,23 @@ class Nav extends Widget
         }
 
         if ($items !== null) {
-            $linkOptions['data-toggle'] = 'dropdown';
-            Html::addCssClass($options, 'dropdown');
-            Html::addCssClass($linkOptions, 'dropdown-toggle');
-            if ($this->dropDownCaret !== '') {
-                $label .= ' ' . $this->dropDownCaret;
+            if ($dropdown) {
+                $linkOptions['data-toggle'] = 'dropdown';
+                Html::addCssClass($options, 'dropdown');
+                Html::addCssClass($linkOptions, 'dropdown-toggle');
+                if ($this->dropDownCaret !== '') {
+                    $label .= ' ' . $this->dropDownCaret;
+                }
             }
             if (is_array($items)) {
                 if ($this->activateItems) {
                     $items = $this->isChildActive($items, $active);
                 }
-                $items = $this->renderDropdown($items, $item);
+                if ($dropdown) {
+                    $items = $this->renderDropdown($items, $item);
+                } else {
+                    $items = $this->renderItemsInternals($items);
+                }
             }
         }
 
