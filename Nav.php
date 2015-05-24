@@ -63,6 +63,7 @@ class Nav extends Widget
      * - linkOptions: array, optional, the HTML attributes of the item's link.
      * - options: array, optional, the HTML attributes of the item container (LI).
      * - active: boolean, optional, whether the item should be on active state or not.
+     * - dropDownOptions: array, optional, the HTML options that will passed on the creation of the [[Dropdown]] widget.
      * - items: array|string, optional, the configuration array for creating a [[Dropdown]] widget,
      *   or a string representing the dropdown menu. Note that Bootstrap does not support sub-dropdown menus.
      *
@@ -186,7 +187,7 @@ class Nav extends Widget
                 if ($this->activateItems) {
                     $items = $this->isChildActive($items, $active);
                 }
-                $items = $this->renderDropdown($items, $item);
+                $items = $this->renderDropdown($items, $item, ArrayHelper::getValue($item, 'dropDownOptions', []));
             }
         }
 
@@ -202,12 +203,14 @@ class Nav extends Widget
      * This method is called to create sub-menus.
      * @param array $items the given items. Please refer to [[Dropdown::items]] for the array structure.
      * @param array $parentItem the parent item information. Please refer to [[items]] for the structure of this array.
+     * @param array $options the HTML options of the Dropdown.
      * @return string the rendering result.
      * @since 2.0.1
      */
-    protected function renderDropdown($items, $parentItem)
+    protected function renderDropdown($items, $parentItem, $options)
     {
         return Dropdown::widget([
+            "options" => $options,
             'items' => $items,
             'encodeLabels' => $this->encodeLabels,
             'clientOptions' => false,
