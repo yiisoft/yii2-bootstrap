@@ -187,7 +187,7 @@ class Nav extends Widget
                 if ($this->activateItems) {
                     $items = $this->isChildActive($items, $active);
                 }
-                $items = $this->renderDropdown($items, $item, ArrayHelper::getValue($item, 'dropDownOptions', []));
+                $items = $this->renderDropdown($items, $item);
             }
         }
 
@@ -203,14 +203,13 @@ class Nav extends Widget
      * This method is called to create sub-menus.
      * @param array $items the given items. Please refer to [[Dropdown::items]] for the array structure.
      * @param array $parentItem the parent item information. Please refer to [[items]] for the structure of this array.
-     * @param array $options the HTML options of the Dropdown.
      * @return string the rendering result.
      * @since 2.0.1
      */
-    protected function renderDropdown($items, $parentItem, $options)
+    protected function renderDropdown($items, $parentItem)
     {
         return Dropdown::widget([
-            "options" => $options,
+            "options" => ArrayHelper::getValue($parentItem, 'dropDownOptions', []),
             'items' => $items,
             'encodeLabels' => $this->encodeLabels,
             'clientOptions' => false,
