@@ -82,6 +82,10 @@ class ActiveForm extends \yii\widgets\ActiveForm
      */
     public $layout = 'default';
 
+    /**
+     * @inheritdoc
+     */
+    public $errorSummaryCssClass = 'alert alert-danger error-summary';
 
     /**
      * @inheritdoc
