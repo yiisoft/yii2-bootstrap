@@ -19,6 +19,6 @@ class BootstrapAsset extends AssetBundle
 {
     public $sourcePath = '@bower/bootstrap/dist';
     public $css = [
-        'css/bootstrap.min.css',
+        'css/bootstrap'.( YII_ENV_DEV ? '.css' : '.min.css' ),
     ];
 }
