@@ -67,6 +67,17 @@ class CollapseTest extends TestCase
                     'encode' => true,
                     'footer' => 'Footer3'
                 ],
+                [
+                    'label' => '<h1>Collapsible Group Item #5</h1>',
+                    'content' => [
+                        '<h2>test content1</h2>',
+                        '<h2>test content2</h2>'
+                    ],
+                    'contentListOptions' => [
+                        'class' => 'list-group list-group-custom',
+                        'encode' => true,
+                    ],
+                ],
             ]
         ]);
 
@@ -102,6 +113,13 @@ class CollapseTest extends TestCase
 <li class="list-group-item"><h2>test content2</h2></li>
 </ul>
 <div class="panel-footer">Footer3</div>
+</div></div>
+<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle" href="#w0-collapse5" data-toggle="collapse" data-parent="#w0">&lt;h1&gt;Collapsible Group Item #5&lt;/h1&gt;</a>
+</h4></div>
+<div id="w0-collapse5" class="panel-collapse collapse"><ul class="list-group list-group-custom">
+<li class="list-group-item">&lt;h2&gt;test content1&lt;/h2&gt;</li>
+<li class="list-group-item">&lt;h2&gt;test content2&lt;/h2&gt;</li>
+</ul>
 </div></div>
 </div>
 

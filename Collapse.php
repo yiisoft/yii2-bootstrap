@@ -63,6 +63,7 @@ class Collapse extends Widget
      * - content: array|string|object, required, the content (HTML) of the group
      * - options: array, optional, the HTML attributes of the group
      * - contentOptions: optional, the HTML attributes of the group's content
+     * - contentListOptions: optional, options merged with default and passed to `Html::ul` when content is array
      */
     public $items = [];
 
@@ -148,13 +149,14 @@ class Collapse extends Widget
             if (is_string($item['content']) || is_object($item['content'])) {
                 $content = Html::tag('div', $item['content'], ['class' => 'panel-body']) . "\n";
             } elseif (is_array($item['content'])) {
-                $content = Html::ul($item['content'], [
+                $contentListOptions = ArrayHelper::merge([
                     'class' => 'list-group',
                     'itemOptions' => [
                         'class' => 'list-group-item'
                     ],
                     'encode' => false,
-                ]) . "\n";
+                ], ArrayHelper::getValue($item, 'contentListOptions', []));
+                $content = Html::ul($item['content'], $contentListOptions) . "\n";
                 if (isset($item['footer'])) {
                     $content .= Html::tag('div', $item['footer'], ['class' => 'panel-footer']) . "\n";
                 }
