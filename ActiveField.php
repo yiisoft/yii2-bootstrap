@@ -375,7 +375,6 @@ class ActiveField extends \yii\widgets\ActiveField
             $config['errorOptions'] = ['class' => 'help-block help-block-error ' . $cssClasses['error']];
             $config['hintOptions'] = ['class' => 'help-block ' . $cssClasses['hint']];
         } elseif ($layout === 'inline') {
-            $config['labelOptions'] = ['class' => 'sr-only'];
             $config['enableError'] = false;
         }
 
