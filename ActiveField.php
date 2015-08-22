@@ -343,7 +343,7 @@ class ActiveField extends \yii\widgets\ActiveField
     {
         $config = [
             'hintOptions' => [
-                'tag' => 'p',
+                'tag' => 'span',
                 'class' => 'help-block',
             ],
             'errorOptions' => [
@@ -351,7 +351,7 @@ class ActiveField extends \yii\widgets\ActiveField
                 'class' => 'help-block help-block-error',
             ],
             'inputOptions' => [
-                'class' => 'form-control',
+                'class' => 'form-group form-md-line-input form-md-floating-label',
             ],
         ];
 
