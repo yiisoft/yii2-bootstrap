@@ -9,6 +9,8 @@ shown in the example below.
 ## Example ##
 
 ```
+use yii\bootstrap\Carousel;
+
 Carousel::widget([
       'controls' => ['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'],
       'showIndicators' => true,
