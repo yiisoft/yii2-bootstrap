@@ -39,3 +39,9 @@ Carousel::widget([
   The items then have one required field (that is the content for the slide) and the second field, which is an optional caption.
   
   As with most Yii widgets, there are options arrays which allow you to further customise the displayed widget.
+
+## Using holder.js ##
+When using the carousel or other image-based widgets, it is useful to have images to use as placeholders until you have your
+final graphics. [Holder.js](https://github.com/imsky/holder) is a useful utility to auto-generate images of the correct size (and various other options) which can be used in your carousel. The example above contains working examples of its usage.
+
+To use it properly, you should add holder into your require-dev section of your composer.json (in the root of your web app) and then run composer update. This will create an imsky/holder directory under vendor. You should then create an AssetBundle (e.g. HolderAsset) and set `$sourcePath = '@vendor/imsky/holder';` and `public $js = ['holder.js'];` (or the minified version if you wish). I then modified my AppAsset to depend on the HolderAsset but you could just include it separately onto the view that needs it. You do NOT need to add the js into the top of the document, it works fine at the end of the body.
