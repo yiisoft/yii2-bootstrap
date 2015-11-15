@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ruleset name="Yii2 Bootstrap">
+    <exclude-pattern>*/docs/*</exclude-pattern>
+    <exclude-pattern>*/tests/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+
+    <rule ref="./vendor/yiisoft/yii2-coding-standards/Yii2/ruleset.xml"/>
+</ruleset>
