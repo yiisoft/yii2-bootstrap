@@ -255,8 +255,9 @@ class ActiveField extends \yii\widgets\ActiveField
                 ];
             }
         } elseif (!isset($options['item'])) {
-            $options['item'] = function ($index, $label, $name, $checked, $value) {
-                return '<div class="checkbox">' . Html::checkbox($name, $checked, ['label' => $label, 'value' => $value]) . '</div>';
+            $itemOptions = isset($options['itemOptions']) ? $options['itemOptions'] : [];
+            $options['item'] = function ($index, $label, $name, $checked, $value) use ($itemOptions) {
+                return '<div class="checkbox">' . Html::checkbox($name, $checked, array_merge($itemOptions, ['label' => $label, 'value' => $value])) . '</div>';
             };
         }
         parent::checkboxList($items, $options);
