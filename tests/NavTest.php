@@ -119,4 +119,45 @@ EXPECTED;
 
         $this->assertEqualsWithoutLE($expected, $out);
     }
+
+    public function testHiddenParent()
+    {
+        Nav::$counter = 0;
+        $out = Nav::widget([
+            'items' => [
+                [
+                    'label' => 'Dropdown1',
+                    'visible' => false,
+                    'items' => [
+                        ['label' => 'Page1', 'content' => 'Page1'],
+                        ['label' => 'Page2', 'content' => 'Page2'],
+                    ],
+                ],
+                [
+                    'label' => 'Page3',
+                ],
+                [
+                    'label' => 'Dropdown2',
+                    'items' => [
+                        ['label' => 'Page4', 'content' => 'Page4', 'visible' => false],
+                        ['label' => 'Page5', 'content' => 'Page5', 'visible' => false],
+                    ],
+                ],
+                [
+                    'label' => 'Dropdown3',
+                    'items' => [
+                        ['label' => 'Page6', 'content' => 'Page6', 'visible' => true],
+                        ['label' => 'Page7', 'content' => 'Page7', 'visible' => false],
+                    ],
+                ],
+            ],
+        ]);
+
+        $expected = <<<EXPECTED
+<ul id="w0" class="nav"><li><a href="#">Page3</a></li>
+<li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Dropdown3 <b class="caret"></b></a><ul id="w1" class="dropdown-menu"><li class="dropdown-header">Page6</li></ul></li></ul>
+EXPECTED;
+
+        $this->assertEqualsWithoutLE($expected, $out);
+    }
 }
