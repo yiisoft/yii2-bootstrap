@@ -212,8 +212,8 @@ class Nav extends Widget
             return false;
         }
 
-        $items = ArrayHelper::getValue($parentItem, 'items');
-        if (empty($items)) {
+        $items = ArrayHelper::getValue($parentItem, 'items', []);
+        if ($items === []) {
             return true;
         }
 
