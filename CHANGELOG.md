@@ -9,6 +9,7 @@ Yii Framework 2 bootstrap extension Change Log
 - Bug #98: Fixed `yii\bootstrap\ButtonDropdown` setting `href` attribute for non `a` tags (13nightevil)
 - Bug #124: Fixed `yii\bootstrap\Tabs` to use `tag` configuration option for item container (arturf)
 - Enh #45: Added support for Bootstrap checkbox/radio toggle buttons (RomeroMsk, klimov-paul)
+- Enh #117: Automatically hide parent 'yii\bootstrap\Nav' section if all subitems are hidden (arogachev)
 
 2.0.5 September 23, 2015
 ------------------------

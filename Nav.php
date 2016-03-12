@@ -141,7 +141,7 @@ class Nav extends Widget
     {
         $items = [];
         foreach ($this->items as $i => $item) {
-            if (isset($item['visible']) && !$item['visible']) {
+            if (!$this->isParentVisible($item)) {
                 continue;
             }
             $items[] = $this->renderItem($item);
@@ -199,6 +199,32 @@ class Nav extends Widget
         }
 
         return Html::tag('li', Html::a($label, $url, $linkOptions) . $items, $options);
+    }
+
+    /**
+     * Check if parent item is visible
+     * @param array $parentItem
+     * @return boolean
+     */
+    protected function isParentVisible($parentItem)
+    {
+        if (isset($parentItem['visible']) && !$parentItem['visible']) {
+            return false;
+        }
+
+        $items = ArrayHelper::getValue($parentItem, 'items');
+        if (empty($items)) {
+            return true;
+        }
+
+        foreach ($items as $item) {
+            $isVisible = ArrayHelper::getValue($item, 'visible');
+            if ($isVisible !== false) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
