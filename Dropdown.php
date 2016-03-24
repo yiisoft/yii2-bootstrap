@@ -124,6 +124,7 @@ class Dropdown extends Widget
                 } else {
                     $content = Html::a($label, $url, $linkOptions);
                 }
+                $lines[] = $content;
             } else {
                 $submenuOptions = $this->submenuOptions;
                 if (isset($item['submenuOptions'])) {
@@ -132,9 +133,9 @@ class Dropdown extends Widget
                 $content = Html::a($label, $url === null ? '#' : $url, $linkOptions)
                     . $this->renderItems($item['items'], $submenuOptions);
                 Html::addCssClass($itemOptions, ['widget' => 'dropdown-submenu']);
-            }
 
-            $lines[] = Html::tag('div', $content, $itemOptions);
+                $lines[] = Html::tag('div', $content, $itemOptions);
+            }
         }
 
         return Html::tag('div', implode("\n", $lines), $options);
