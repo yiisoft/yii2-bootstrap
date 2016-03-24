@@ -116,11 +116,11 @@ class Dropdown extends Widget
             $itemOptions = ArrayHelper::getValue($item, 'options', []);
             $linkOptions = ArrayHelper::getValue($item, 'linkOptions', []);
             $linkOptions['tabindex'] = '-1';
+            Html::addCssClass($linkOptions, 'dropdown-item');
             $url = array_key_exists('url', $item) ? $item['url'] : null;
             if (empty($item['items'])) {
                 if ($url === null) {
-                    $content = $label;
-                    Html::addCssClass($itemOptions, ['widget' => 'dropdown-header']);
+                    $content = Html::tag('h6', $label, ['class' => 'dropdown-header']);
                 } else {
                     $content = Html::a($label, $url, $linkOptions);
                 }
@@ -134,9 +134,9 @@ class Dropdown extends Widget
                 Html::addCssClass($itemOptions, ['widget' => 'dropdown-submenu']);
             }
 
-            $lines[] = Html::tag('li', $content, $itemOptions);
+            $lines[] = Html::tag('div', $content, $itemOptions);
         }
 
-        return Html::tag('ul', implode("\n", $lines), $options);
+        return Html::tag('div', implode("\n", $lines), $options);
     }
 }
