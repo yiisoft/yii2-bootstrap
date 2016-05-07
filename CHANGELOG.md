@@ -6,6 +6,7 @@ Yii Framework 2 bootstrap extension Change Log
 
 - Bug #126: `yii\bootstrap\ToggleButtonGroup` was unable to work without model (makroxyz)
 - Bug #130: Fixed `yii\bootstrap\Collapse` to use pure numerical value on `content` property (meysampg)
+- Enh #131 Added `tabContentOptions` to set HTML attributes for 'tab-content' container in `Tabs` (AndrewKorpusov)
 
 2.0.6 March 17, 2016
 --------------------
