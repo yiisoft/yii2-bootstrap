@@ -3,7 +3,6 @@ namespace yiiunit\extensions\bootstrap;
 
 use yii\bootstrap\Tabs;
 use yii\helpers\Html;
-use yii\helpers\VarDumper;
 
 /**
  * Tests for Tabs widget
