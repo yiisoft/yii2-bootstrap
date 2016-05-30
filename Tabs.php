@@ -115,6 +115,11 @@ class Tabs extends Widget
      */
     public $renderTabContent = true;
 
+    /**
+     * @var array list of Html attributes for the `tab-content` container
+     * @since 2.0.7
+     */
+    public $tabContentOptions = [];
 
     /**
      * Initializes the widget.
@@ -123,6 +128,7 @@ class Tabs extends Widget
     {
         parent::init();
         Html::addCssClass($this->options, ['widget' => 'nav', $this->navType]);
+        Html::addCssClass($this->tabContentOptions, 'tab-content');
     }
 
     /**
@@ -203,7 +209,7 @@ class Tabs extends Widget
         }
 
         return Html::tag('ul', implode("\n", $headers), $this->options)
-        . ($this->renderTabContent ? "\n" . Html::tag('div', implode("\n", $panes), ['class' => 'tab-content']) : '');
+        . ($this->renderTabContent ? "\n" . Html::tag('div', implode("\n", $panes), $this->tabContentOptions) : '');
     }
 
     /**
