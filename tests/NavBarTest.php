@@ -12,6 +12,8 @@ class NavBarTest extends TestCase
 {
     public function testRender()
     {
+        NavBar::$counter = 0;
+
         $out = NavBar::widget([
             'brandLabel' => 'My Company',
             'brandUrl' => '/',
@@ -19,8 +21,6 @@ class NavBarTest extends TestCase
                 'class' => 'navbar-inverse navbar-static-top navbar-frontend',
             ],
         ]);
-
-        echo $out;
 
         $expected = <<<EXPECTED
 <nav id="w0" class="navbar-inverse navbar-static-top navbar-frontend navbar"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w0-collapse"><span class="sr-only">Toggle navigation</span>

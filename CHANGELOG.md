@@ -16,6 +16,7 @@ Yii Framework 2 bootstrap extension Change Log
 - Bug #124: Fixed `yii\bootstrap\Tabs` to use `tag` configuration option for item container (arturf)
 - Enh #45: Added support for Bootstrap checkbox/radio toggle buttons (RomeroMsk, klimov-paul)
 - Enh #92: Allow overriding `data-toggle` in `yii\bootstrap\Tabs` (machour)
+- Bug #137: Remove role="navbar" from yii\bootstrap\NavBar according to new aria specification
 
 
 2.0.5 September 23, 2015
