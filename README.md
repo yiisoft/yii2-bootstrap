@@ -7,7 +7,7 @@ in Yii applications extremely easy.
 
 For license information check the [LICENSE](LICENSE.md)-file.
 
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
+Documentation for extension is at [docs/guide/README.md](https://github.com/yiisoft/yii2-bootstrap/blob/master/docs/guide/README.md).
 
 [![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-bootstrap/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-bootstrap)
 [![Total Downloads](https://poser.pugx.org/yiisoft/yii2-bootstrap/downloads.png)](https://packagist.org/packages/yiisoft/yii2-bootstrap)
