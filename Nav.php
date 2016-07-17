@@ -105,7 +105,10 @@ class Nav extends Widget
      * Defaults to `null` which means `<b class="caret"></b>` will be used. To disable the caret, set this property to be an empty string.
      */
     public $dropDownCaret;
-
+    /**
+     * @var array the HTML attributes for the label tag.
+     */
+    public $labelOptions = [];
 
     /**
      * Initializes the widget.
@@ -166,7 +169,7 @@ class Nav extends Widget
         }
         $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
         $label = $encodeLabel ? Html::encode($item['label']) : $item['label'];
-        $options = ArrayHelper::getValue($item, 'options', []);
+        $options = isset($item['options']) ? $item['options'] : $this->labelOptions;
         $items = ArrayHelper::getValue($item, 'items');
         $url = ArrayHelper::getValue($item, 'url', '#');
         $linkOptions = ArrayHelper::getValue($item, 'linkOptions', []);
