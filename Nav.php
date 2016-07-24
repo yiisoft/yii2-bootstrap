@@ -108,7 +108,7 @@ class Nav extends Widget
     /**
      * @var string name of a class to use for rendering dropdowns withing this widget. Defaults to [[Dropdown]].
      */
-	public $dropdownClass = Dropdown::class;
+	public $dropdownClass = 'yii\bootstrap\Dropdown';
 
 
     /**
