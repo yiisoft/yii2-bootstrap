@@ -174,7 +174,7 @@ class HtmlTest extends TestCase
                     "content2",
                     "content3",
                 ],
-                '<div class="row"><div class="col-xs-12 col-sm-2">content1</div><div class="col-xs-12 col-sm-4">content2</div><div class="col-xs-12 col-sm-6">content3</div></div>'
+                '<div class="row"><div class="col-xs-12 col-md-2">content1</div><div class="col-xs-12 col-md-4">content2</div><div class="col-xs-12 col-md-6">content3</div></div>'
             ],
         ];
     }
