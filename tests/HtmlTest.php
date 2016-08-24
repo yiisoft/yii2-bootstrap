@@ -148,4 +148,45 @@ class HtmlTest extends TestCase
     public function testGridRow(array $options, $expectedHtml) {
         $this->assertEquals($expectedHtml, Html::beginGridRow($options));
     }
+    
+    /**
+     * @return array
+     */
+    public function dataProviderGrid() {
+        return [
+            [
+                [
+                    4,8
+                ],
+                [
+                    "content1",
+                    "content2",
+                ],
+                '<div class="row"><div class="col-xs-4">content1</div><div class="col-xs-8">content2</div></div>'
+            ],
+            [
+                [
+                    "xs" => [12,12,12],
+                    "md" => [2,4,6],
+                ],
+                [
+                    "content1",
+                    "content2",
+                    "content3",
+                ],
+                '<div class="row"><div class="col-xs-12 col-sm-2">content1</div><div class="col-xs-12 col-sm-4">content2</div><div class="col-xs-12 col-sm-6">content3</div></div>'
+            ],
+        ];
+    }
+    
+    /**
+     * @dataProvider dataProviderGrid
+     * 
+     * @param array $cols
+     * @param array $contents
+     * @param string $expectedHtml
+     */
+    public function testGrid(array $cols, array $contents, $expectedHtml) {
+        $this->assertEquals($expectedHtml, Html::grid($cols, $contents));
+    }
 } 
