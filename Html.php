@@ -19,7 +19,7 @@ namespace yii\bootstrap;
  */
 class Html extends BaseHtml
 {
-    public static function beginGridCol($cols, $options = [])
+    public static function beginGridCol(array $cols, $options = [])
     {
         $class = "";
         $sizes = ["xs","sm","md","lg"];
@@ -48,5 +48,21 @@ class Html extends BaseHtml
     
     public static function endGridRow() {
         return self::endTag("div");
+    }
+    
+    public static function grid(array $cols, array $contents) {
+        $html = "";
+        foreach ($contents as $i => $colContent) {
+            if (isset($cols[$i])) {
+                $args = [ $cols[$i] ];
+            } else {
+                $args = [];
+                foreach ($cols as $z => $col) {
+                    $args[$z] = $col[$i];
+                }
+            }
+            $html .= self::beginGridCol($args) .$colContent. self::endGridCol();
+        }
+        return self::beginGridRow() .$html. self::endGridRow();
     }
 }
