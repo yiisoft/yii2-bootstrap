@@ -19,4 +19,20 @@ namespace yii\bootstrap;
  */
 class Html extends BaseHtml
 {
+    public static function gridCol($cols, $options = [])
+    {
+        $class = "";
+        $sizes = ["xs","sm","md","lg"];
+        foreach ($cols as $i => $count) {
+            $size = is_integer($i) ? $sizes[$i] : $i;
+            $class .= "col-{$size}-{$count} ";
+        }
+        $class = rtrim($class);
+        if (isset($options['class'])) {
+            $options['class'] .= " " . $class;
+        } else {
+            $options['class'] = $class;
+        }
+        return Html::beginTag("div", $options);
+    }
 }
