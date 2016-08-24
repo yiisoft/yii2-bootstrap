@@ -81,4 +81,42 @@ class HtmlTest extends TestCase
     {
         $this->assertEquals($expectedHtml, Html::staticControl($value, $options));
     }
+    
+    /**
+     * @return array
+     */
+    public function dataProviderGridCol() {
+        return [
+            [
+                [1,2,3,4],
+                [],
+                '<div class="col-xs-1 col-sm-2 col-md-3 col-lg-4">'
+            ],
+            [
+                [1,2],
+                [
+                    "class" => "row",
+                ],
+                '<div class="row col-xs-1 col-sm-2">'
+            ],
+            [
+                [
+                    "xs" => 12,
+                    "lg" => 6,
+                ],
+                [],
+                '<div class="col-xs-12 col-lg-6">'
+            ],
+        ];
+    }
+    
+    /**
+     * @dataProvider dataProviderGridCol
+     * 
+     * @param array $value
+     * @param string $expectedHtml
+     */
+    public function testGridCol(array $value, array $options, $expectedHtml) {
+        $this->assertEquals($expectedHtml, Html::gridCol($value, $options));
+    }
 } 
