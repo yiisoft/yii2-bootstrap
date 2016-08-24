@@ -114,9 +114,38 @@ class HtmlTest extends TestCase
      * @dataProvider dataProviderGridCol
      * 
      * @param array $value
+     * @param array $options
      * @param string $expectedHtml
      */
     public function testGridCol(array $value, array $options, $expectedHtml) {
-        $this->assertEquals($expectedHtml, Html::gridCol($value, $options));
+        $this->assertEquals($expectedHtml, Html::beginGridCol($value, $options));
+    }
+    
+    /**
+     * @return array
+     */
+    public function dataProviderGridRow() {
+        return [
+            [
+                [],
+                '<div class="row">'
+            ],
+            [
+                [
+                    "class" => "form-control",
+                ],
+                '<div class="form-control row">'
+            ],
+        ];
+    }
+    
+    /**
+     * @dataProvider dataProviderGridRow
+     * 
+     * @param array $options
+     * @param string $expectedHtml
+     */
+    public function testGridRow(array $options, $expectedHtml) {
+        $this->assertEquals($expectedHtml, Html::beginGridRow($options));
     }
 } 
