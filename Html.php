@@ -31,11 +31,11 @@ class Html extends BaseHtml
         $options['class'] = isset($options['class'])
             ? $options['class'] ." ". $class 
             : $class;
-        return Html::beginTag("div", $options);
+        return self::beginTag("div", $options);
     }
     
     public static function endGridCol() {
-        return Html::endTag("div");
+        return self::endTag("div");
     }
 
     public static function beginGridRow($options = []) {
@@ -43,10 +43,10 @@ class Html extends BaseHtml
         $options['class'] = isset($options['class'])
             ? $options['class'] ." ". $class 
             : $class;
-        return Html::beginTag("div", $options);
+        return self::beginTag("div", $options);
     }
     
     public static function endGridRow() {
-        return Html::endTag("div");
+        return self::endTag("div");
     }
 }
