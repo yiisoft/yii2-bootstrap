@@ -242,7 +242,7 @@ class Nav extends Widget
                     $active = true;
                 }
             }
-            $childItems = ArrayHelper::getValue($child, 'items');
+            /*$childItems = ArrayHelper::getValue($child, 'items');
             if(is_array($childItems)) {
                 $activeParent = false;
                 $items[$i]['items'] = $this->isChildActive($childItems, $activeParent);
@@ -250,7 +250,7 @@ class Nav extends Widget
                     Html::addCssClass($items[$i]['options'], 'active');
                     $active = true;
                 }
-            }
+            }*/
         }
         return $items;
     }
