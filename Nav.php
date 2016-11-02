@@ -231,7 +231,7 @@ class Nav extends Widget
      * Check to see if a child item is active optionally activating the parent.
      * @param array $items @see items
      * @param boolean $active should the parent be active too
-     * @return array @see items
+      @return array @see items
      */
     protected function isChildActive($items, &$active)
     {
