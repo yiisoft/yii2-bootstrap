@@ -242,15 +242,15 @@ class Nav extends Widget
                     $active = true;
                 }
             }
-            $childItems = ArrayHelper::getValue($child, 'items');
-            if(is_array($childItems)) {
-                $activeParent = false;
-                $items[$i]['items'] = $this->isChildActive($childItems, $activeParent);
-                if ($activeParent) {
-                    Html::addCssClass($items[$i]['options'], 'active');
-                    $active = true;
-                }
-            }
+            $childItems = ArrayHelper::getValue($child, 'items');
+            if(is_array($childItems)) {
+                $activeParent = false;
+                $items[$i]['items'] = $this->isChildActive($childItems, $activeParent);
+                if ($activeParent) {
+                    Html::addCssClass($items[$i]['options'], 'active');
+                    $active = true;
+                }
+            }
         }
         return $items;
     }
