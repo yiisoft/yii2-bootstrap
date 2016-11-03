@@ -106,7 +106,7 @@ class Nav extends Widget
      */
     public $dropDownCaret;
     /**
-     * @var string name of a class to use for rendering dropdowns withing this widget. Defaults to [[Dropdown]].
+     * @var string name of a class to use for rendering dropdowns within this widget. Defaults to [[Dropdown]].
 	 * @since 2.0.7
      */
 	public $dropdownClass = 'yii\bootstrap\Dropdown';
@@ -239,6 +239,15 @@ class Nav extends Widget
             if (ArrayHelper::remove($items[$i], 'active', false) || $this->isItemActive($child)) {
                 Html::addCssClass($items[$i]['options'], 'active');
                 if ($this->activateParents) {
+                    $active = true;
+                }
+            }
+            $childItems = ArrayHelper::getValue($child, 'items');
+            if(is_array($childItems)) {
+                $activeParent = false;
+                $items[$i]['items'] = $this->isChildActive($childItems, $activeParent);
+                if ($activeParent) {
+                    Html::addCssClass($items[$i]['options'], 'active');
                     $active = true;
                 }
             }
