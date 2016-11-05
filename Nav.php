@@ -236,6 +236,9 @@ class Nav extends Widget
     protected function isChildActive($items, &$active)
     {
         foreach ($items as $i => $child) {
+            if (is_array($child) && !ArrayHelper::getValue($child, 'visible', true)) {
+                continue;
+            }
             if (ArrayHelper::remove($items[$i], 'active', false) || $this->isItemActive($child)) {
                 Html::addCssClass($items[$i]['options'], 'active');
                 if ($this->activateParents) {
