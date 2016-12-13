@@ -23,6 +23,7 @@ use yii\helpers\ArrayHelper;
  *             'label' => 'Home',
  *             'url' => ['site/index'],
  *             'linkOptions' => [...],
+ *             'active'=>function($item){return bool},
  *         ],
  *         [
  *             'label' => 'Dropdown',
@@ -178,6 +179,9 @@ class Nav extends Widget
 
         if (isset($item['active'])) {
             $active = ArrayHelper::remove($item, 'active', false);
+            if(is_callable($active)){
+                $active = call_user_func_array($active, [$item]);
+            }
         } else {
             $active = $this->isItemActive($item);
         }
