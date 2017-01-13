@@ -230,7 +230,7 @@ class Tabs extends Widget
             $this->parts['{nav}'] = Html::tag('ul', implode("\n", $headers), $this->options);
         }
         if (!isset($this->parts['{content}'])) {
-            $this->parts['{content}'] = ($this->renderTabContent ? "\n" . Html::tag('div', implode("\n", $panes), ['class' => 'tab-content']) : '');
+            $this->parts['{content}'] = ($this->renderTabContent ? Html::tag('div', implode("\n", $panes), ['class' => 'tab-content']) : '');
         }
 
         return strtr($this->template, $this->parts);
