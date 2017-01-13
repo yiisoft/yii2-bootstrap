@@ -123,7 +123,19 @@ class Tabs extends Widget
 	 * @since 2.0.7
 	 */
 	public $dropdownClass = 'yii\bootstrap\Dropdown';
+    /**
+     * @var string the template that is used to arrange the `ul` and `.tab-content` elements.
+     */
+    public $template = "{nav}\n{content}";
 
+    /**
+     * @var array parts of the tabs: nav, content. This will be used together with
+     * [[template]] to generate the final HTML code. The keys are the token names in [[template]],
+     * while the values are the corresponding HTML code. Valid tokens include `{nav}`, `{content}`.
+     * Note that you normally don't need to access this property directly as
+     * it is maintained by various methods of this class.
+     */
+    public $parts = [];
 
     /**
      * Initializes the widget.
@@ -213,8 +225,15 @@ class Tabs extends Widget
             $headers[] = Html::tag('li', $header, $headerOptions);
         }
 
-        return Html::tag('ul', implode("\n", $headers), $this->options)
-        . ($this->renderTabContent ? "\n" . Html::tag('div', implode("\n", $panes), ['class' => 'tab-content']) : '');
+
+        if (!isset($this->parts['{nav}'])) {
+            $this->parts['{nav}'] = Html::tag('ul', implode("\n", $headers), $this->options);
+        }
+        if (!isset($this->parts['{content}'])) {
+            $this->parts['{content}'] = ($this->renderTabContent ? Html::tag('div', implode("\n", $panes), ['class' => 'tab-content']) : '');
+        }
+
+        return strtr($this->template, $this->parts);
     }
 
     /**
