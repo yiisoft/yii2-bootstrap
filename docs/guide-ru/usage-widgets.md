@@ -20,12 +20,9 @@
 
 ## Настройка CSS классов виджетов <span id="customizing-css-classes"></span>
 
-The widgets allow quick composition of the HTML for the bootstrap components that require the bootstrap CSS classes.
-The default classes for a particular component will be added automatically by the widget, and the optional classes that you may want to customize are usually supported through the properties of the widget.
+Виджеты позволяют быстро создавать HTML bootstrap компоненты, которые требуют CSS классы bootstrap. Классы по умолчанию, для конкретного компонента, будут добавлены автоматически виджетом, и необязательные классы, которые вы можете настроить, как правило, поддерживаются через свойства виджета.
 
-For example, you may use [[yii\bootstrap\Button::options]] to customize the appearance of a button.
-The class 'btn' which is required for a button will be added automatically, so you don't need to worry about it.
-All you need is specify a particular button class:
+Например, вы можете использовать [[yii\bootstrap\Button::options]] чтобы настроить внешний вид кнопки. Класс `btn`, который требуется для кнопки, будет добавлен автоматически чтобы вы не беспокоились об этом. Все, что вам нужно, это указать конкретный класс кнопки:
 
 ```php
 echo Button::widget([
@@ -34,12 +31,9 @@ echo Button::widget([
 ]);
 ```
 
-However, sometimes you may need to replace the default classes with the alternative ones.
-For example, the widget [[yii\bootstrap\ButtonGroup]] uses 'btn-group' class for the container div by default,
-but you may need to use 'btn-group-vertical' instead to align the buttons vertically.
-Using a plain 'class' option simply adds 'btn-group-vertical' to 'btn-group', which will produce an incorrect result.
-In order to override the default classes of a widget, you need to specify the 'class' option as an array that contains the customized class definition under the 'widget' key:
-
+Тем не менее, иногда вам может понадобиться заменить классы по умолчанию альтернативными
+Например, виджет  [[yii\bootstrap\ButtonGroup]] использует класс 'btn-group' для контейнера div по умолчанию, но вам, возможно, прийдется использовать 'btn-group-vertical'чтобы выровнять кноки по вертикали.
+С помощью опции 'class' просто добавить 'btn-group-vertical' к 'btn-group', которая даст не правильный результат. Для того, чтобы переопределить классы виджета по умолчанию, необходимо указать параметр "class" как массив, содержащий определение класса настроенное в ключе 'widget':
 ```php
 echo ButtonGroup::widget([
     'options' => [
