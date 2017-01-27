@@ -1,19 +1,18 @@
 Html helper
 ===========
 
-Bootstrap introduces many consistent HTML constructions and skeletons, which allow creating different visual effects.
-Only the most complex of them are covered by the widgets provided with this extension. The rest should be composed manually
-using direct HTML composition.
-However, several special Bootstrap markup cases are covered by [[\yii\bootstrap\Html]] helper.
-[[\yii\bootstrap\Html]] is an enhanced version of the regular [[\yii\helpers\Html]] dedicated to the Bootstrap needs.
-It provides several useful methods:
+Bootstrap вводит много последовательных HTML конструкции и каркасов, которые позволяют создавать различные визуальные эффекты.
+Only the most complex of them are covered by the widgets provided with this extension. Остальные должны быть собраны вручную используя напрямую HTML.
+Тем не менее, несколько специальных Bootstrap разметки покрываются в  [[\yii\bootstrap\Html]] помощнике.
+[[\yii\bootstrap\Html]] является расширенной версией регулярного [[\yii\helpers\Html]] удовлетворяющий Bootstrap потребности.
+Он предоставляет несколько полезных методов:
 
- - `icon()` - allows rendering of Glyphicon icons
- - `staticControl()` - allows rendering of form "static controls"
+ - `icon()` - позволяет отображать иконки Glyphicon
+ - `staticControl()` - позволяет отображать "статические элементы управления" формы
 
-[[\yii\bootstrap\Html]] inherits all functionality available at [[\yii\helpers\Html]] and can be used as a substitute,
-so you don't need them both inside your view files.
-For example:
+[[\yii\bootstrap\Html]] наследует все функциональные возможности, доступные в [[\yii\helpers\Html]] и может быть использован в качестве замены,
+так что вам не нужно внутри ваших представлений.
+Например:
 
 ```php
 <?php
@@ -26,5 +25,4 @@ use yii\bootstrap\Html;
 ]); ?>
 ```
 
-> Attention: do not confuse [[\yii\bootstrap\Html]] and [[\yii\helpers\Html]], be careful of which class
-  you are using inside your views.
+> Attention: не путайте [[\yii\bootstrap\Html]] and [[\yii\helpers\Html]], будте осторожны, какой класс вы используете в своих представлениях.

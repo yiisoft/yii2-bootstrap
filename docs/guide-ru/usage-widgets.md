@@ -1,8 +1,7 @@
-Yii widgets
+Виджеты Yii
 ===========
 
-Most complex bootstrap components are wrapped into Yii widgets to allow more robust syntax and integrate with
-framework features. All widgets belong to `\yii\bootstrap` namespace:
+Большинство сложных bootstrap компонентов обернуты в виджеты Yii, чтобы обеспечить более надежный синтаксис и интеграцию с особенностями фреймворка. Все виджеты относя к пространству имен `\yii\bootstrap`:
 
 - [[yii\bootstrap\ActiveForm|ActiveForm]]
 - [[yii\bootstrap\Alert|Alert]]
@@ -19,7 +18,7 @@ framework features. All widgets belong to `\yii\bootstrap` namespace:
 - [[yii\bootstrap\Tabs|Tabs]]
 
 
-## Customizing widget CSS classes <span id="customizing-css-classes"></span>
+## Настройка CSS классов виджетов <span id="customizing-css-classes"></span>
 
 The widgets allow quick composition of the HTML for the bootstrap components that require the bootstrap CSS classes.
 The default classes for a particular component will be added automatically by the widget, and the optional classes that you may want to customize are usually supported through the properties of the widget.
