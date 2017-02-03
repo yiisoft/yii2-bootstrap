@@ -370,8 +370,10 @@ class ActiveField extends \yii\widgets\ActiveField
 
         if ($layout === 'horizontal') {
             $config['template'] = "{label}\n{beginWrapper}\n{input}\n{error}\n{endWrapper}\n{hint}";
-            $cssClasses = isset($instanceConfig['horizontalCssClasses']) ?
-                ArrayHelper::merge($this->horizontalCssClasses, $instanceConfig['horizontalCssClasses']) : $this->horizontalCssClasses;
+            $cssClasses = $this->horizontalCssClasses;
+            if (isset($instanceConfig['horizontalCssClasses'])) {
+                ArrayHelper::merge($this->horizontalCssClasses, $instanceConfig['horizontalCssClasses']);
+            }
             $config['horizontalCssClasses'] = $cssClasses;
             $config['wrapperOptions'] = ['class' => $cssClasses['wrapper']];
             $config['labelOptions'] = ['class' => 'control-label ' . $cssClasses['label']];
