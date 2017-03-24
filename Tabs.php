@@ -296,7 +296,7 @@ class Tabs extends Widget
     protected function setActiveTab()
     {
         foreach ($this->items as $n => $item) {
-            if((!isset($item['visible'])) || (isset($item['visible']) && $item['visible'] !== false)){
+            if(!(isset($item['active']) && $item['active'] === false) && ((!isset($item['visible'])) || (isset($item['visible']) && $item['visible'] !== false))){
                 $this->items[$n]['active'] = true;
                 return;
             }
