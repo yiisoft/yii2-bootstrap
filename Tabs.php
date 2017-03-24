@@ -154,7 +154,7 @@ class Tabs extends Widget
         $panes = [];
 
         if (!$this->hasActiveTab() && !empty($this->items)) {
-            $this->activateTab();
+            $this->activateFirstVisibleTab();
         }
 
         foreach ($this->items as $n => $item) {
@@ -294,12 +294,12 @@ class Tabs extends Widget
      * Sets the first visible tab as active
      * @since 2.0.7
      */
-    protected function activateTab()
+    protected function activateFirstVisibleTab()
     {
         foreach ($this->items as $n => $item) {
-            $active = isset($item['active'])?$item['active']:null;
-            $visible = isset($item['visible'])?$item['visible']:null;
-            if($visible !== false && $active !== false){
+            $active = ArrayHelper::getValue($item, 'active', null);
+            $visible = ArrayHelper::getValue($item, 'visible', null);
+            if ($visible !== false && $active !== false) {
                 $this->items[$n]['active'] = true;
                 return;
             }

@@ -138,4 +138,57 @@ class TabsTest extends TestCase
 
         $this->assertContains('<' . $checkTag, $out);
     }
+    public function testActivateFirstVisibleTab()
+    {
+        $html = Tabs::widget([
+            'id'=>'mytab',
+            'items' => [
+                [
+                    'label' => 'Tab 1',
+                    'content' => 'some content',
+                    'visible' => false
+                ],
+                [
+                    'label' => 'Tab 2',
+                    'content' => 'some content'                            
+                ],
+                [
+                    'label' => 'Tab 3',
+                    'content' => 'some content'
+                ],
+                [
+                    'label' => 'Tab 4',
+                    'content' => 'some content'
+                ]
+            ]
+        ]);        
+        $this->assertNotContains('<li class="active"><a href="#mytab-tab0" data-toggle="tab">Tab 1</a></li>', $html);
+        $this->assertContains('<li class="active"><a href="#mytab-tab1" data-toggle="tab">Tab 2</a></li>', $html);
+    }
+    public function testActivateTab()
+    {
+        $html = Tabs::widget([
+            'id'=>'mytab',
+            'items' => [
+                [
+                    'label' => 'Tab 1',
+                    'content' => 'some content'                    
+                ],
+                [
+                    'label' => 'Tab 2',
+                    'content' => 'some content'                            
+                ],
+                [
+                    'label' => 'Tab 3',
+                    'content' => 'some content',
+                    'active' => true
+                ],
+                [
+                    'label' => 'Tab 4',
+                    'content' => 'some content'
+                ]
+            ]
+        ]);        
+        $this->assertContains('<li class="active"><a href="#mytab-tab2" data-toggle="tab">Tab 3</a></li>', $html);
+    }
 }
