@@ -154,7 +154,7 @@ class Tabs extends Widget
         $panes = [];
 
         if (!$this->hasActiveTab() && !empty($this->items)) {
-            $this->items[0]['active'] = true;
+            $this->setActiveTab();
         }
 
         foreach ($this->items as $n => $item) {
@@ -289,5 +289,17 @@ class Tabs extends Widget
     public function renderPanes($panes)
     {
         return $this->renderTabContent ? "\n" . Html::tag('div', implode("\n", $panes), ['class' => 'tab-content']) : '';
+    }
+    /**
+     * Sets the first visible tab as active
+     */
+    protected function setActiveTab()
+    {
+        foreach ($this->items as $n => $item) {
+            if((!isset($item['visible'])) || (isset($item['visible']) && $item['visible'] !== false)){
+                $this->items[$n]['active'] = true;
+                return;
+            }
+        }
     }
 }
