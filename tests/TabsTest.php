@@ -172,7 +172,8 @@ class TabsTest extends TestCase
             'items' => [
                 [
                     'label' => 'Tab 1',
-                    'content' => 'some content'                    
+                    'content' => 'some content',
+                    'visible'=>false
                 ],
                 [
                     'label' => 'Tab 2',
