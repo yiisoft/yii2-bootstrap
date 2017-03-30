@@ -4,6 +4,7 @@ Yii Framework 2 bootstrap extension Change Log
 2.0.7 under development
 -----------------------
 
+- Bug #190: Fixed `yii\bootstrap\Alert` message does not appear (grd16)
 - Bug #126: `yii\bootstrap\ToggleButtonGroup` was unable to work without model (makroxyz)
 - Bug #130: Fixed `yii\bootstrap\Collapse` to use pure numerical value on `content` property (meysampg)
 
