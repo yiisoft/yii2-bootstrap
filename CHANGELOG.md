@@ -1,12 +1,25 @@
 Yii Framework 2 bootstrap extension Change Log
 ==============================================
 
+
+2.1.0 under development
+-----------------------
+
+- Chg #133: Markup and defaults were adjusted for Bootstrap 4 alpha (alanwillms, skotos)
+- Bug #190: Fixed `yii\bootstrap\Alert` message does not appear (grd16)
+
+
 2.0.7 under development
 -----------------------
 
-- Bug #190: Fixed `yii\bootstrap\Alert` message does not appear (grd16)
+- Enh #145: Added the ability to customize the class used to draw dropdowns in `yii\bootstrap\Nav`, `yii\bootstrapButtonDropdown` and `yii\bootstrap\Tab` widgets (PowerGamer1)
 - Bug #126: `yii\bootstrap\ToggleButtonGroup` was unable to work without model (makroxyz)
 - Bug #130: Fixed `yii\bootstrap\Collapse` to use pure numerical value on `content` property (meysampg)
+- Bug #137: Remove `role="navbar"` from `yii\bootstrap\NavBar` according to new aria specification (tino415)
+- Enh #113: Allow URLs instead of content for Tab Widget Dropdown items (Okeanos)
+- Bug #143: Fixed `yii\bootstrap\Nav` to use tags according to bootstrap docs (PowerGamer1)
+- Bug #162: Fixed `yii\bootstrap\Nav` not taking explicit `active` into account when `activateItems` is off (samdark)
+- Enh #174: Added `yii\bootstrap\Tabs::renderPanes()` to allow extending the class to manipulate the content between the tabs and the content (thiagotalma)
 
 2.0.6 March 17, 2016
 --------------------
