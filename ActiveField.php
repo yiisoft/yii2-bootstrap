@@ -184,7 +184,7 @@ class ActiveField extends \yii\widgets\ActiveField
                 $this->parts['{input}'] = strtr($this->inputTemplate, ['{input}' => $input]);
             }
         }
-        return parent::render($content);
+        return parent::render($content) . ' ';
     }
 
     /**
