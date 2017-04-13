@@ -70,7 +70,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      */
     public $fieldClass = 'yii\bootstrap\ActiveField';
     /**
-     * @var array HTML attributes for the form tag. Default is `['role' => 'form']`.
+     * @var array HTML attributes for the form tag. Default is `[]`.
      */
     public $options = [];
     /**
