@@ -109,6 +109,12 @@ class Tabs extends Widget
      */
     public $encodeLabels = true;
     /**
+     * @var boolean whether to automatically activate items according to whether their route setting
+     * matches the currently requested route.
+     * @see isItemActive
+     */
+    public $activateItems = true;    
+    /**
      * @var string specifies the Bootstrap tab styling.
      */
     public $navType = 'nav-tabs';
@@ -160,7 +166,7 @@ class Tabs extends Widget
         $headers = [];
         $panes = [];
 
-        if (!$this->hasActiveTab() && !empty($this->items)) {
+        if ($this->activateItems && !$this->hasActiveTab() && !empty($this->items)) {
             $this->items[0]['active'] = true;
         }
 
