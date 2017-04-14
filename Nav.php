@@ -39,7 +39,7 @@ use yii\helpers\ArrayHelper;
  *             'visible' => Yii::$app->user->isGuest
  *         ],
  *     ],
- *     'options' => ['class' =>'nav-pills'], // set this to nav-tab to get tab-styled navigation
+ *     'options' => ['class' =>'nav-pills'], // set this to 'nav-tabs' to get tab-styled navigation
  * ]);
  * ```
  *
