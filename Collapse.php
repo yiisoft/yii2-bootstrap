@@ -63,6 +63,26 @@ class Collapse extends Widget
      * - content: array|string|object, required, the content (HTML) of the group
      * - options: array, optional, the HTML attributes of the group
      * - contentOptions: optional, the HTML attributes of the group's content
+     *
+     * Since version 2.0.7 you may also specify this property as key-value pairs, where the key refers to the
+     * `label` and the value refers to `content`, if it is a string or is interpreted as explained above if it is an array.
+     *
+     * For example:
+     *
+     * ```php
+     * echo Collapse::widget([
+     *     'items' => [
+     *       'Introduction' => 'This is the first collapsable menu',
+     *       'Second panel' => [
+     *           'content' => 'This is the second collapsable menu',
+     *       ],
+     *       [
+     *           'label' => 'Third panel',
+     *           'content' => 'This is the third collapsable menu',
+     *       ],
+     *   ]
+     * ])
+     * ```
      */
     public $items = [];
     /**
@@ -102,9 +122,16 @@ class Collapse extends Widget
     {
         $items = [];
         $index = 0;
-        foreach ($this->items as $item) {
+        foreach ($this->items as $key => $item) {
+            if (!is_array($item)) {
+                $item = ['content' => $item];
+            }
             if (!array_key_exists('label', $item)) {
-                throw new InvalidConfigException("The 'label' option is required.");
+                if (is_int($key)) {
+                    throw new InvalidConfigException("The 'label' option is required.");
+                } else {
+                    $item['label'] = $key;
+                }
             }
             $header = $item['label'];
             $options = ArrayHelper::getValue($item, 'options', []);
