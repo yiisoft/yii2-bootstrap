@@ -159,6 +159,26 @@ HTML
         , $output);
     }
 
+    public function invalidItemsProvider()
+    {
+        return [
+            [ ['content'] ], // only content without label key
+            [ [[]] ], // only content array without label
+            [ [['content' => 'test']] ], // only content array without label
+        ];
+    }
+
+    /**
+     * @dataProvider invalidItemsProvider
+     * @expectedException \yii\base\InvalidConfigException
+     */
+    public function testMissingLabel($items)
+    {
+        Collapse::widget([
+            'items' => $items,
+        ]);
+    }
+
     /**
      * @see https://github.com/yiisoft/yii2/issues/8357
      */
