@@ -22,7 +22,7 @@ class ActiveFieldTest extends TestCase
      */
     private $helperForm;
     /**
-     * @var string
+      * @var string
      */
     private $attributeName = 'attributeName';
 
@@ -58,7 +58,7 @@ class ActiveFieldTest extends TestCase
 <div class="radio"><label><input type="radio" name="DynamicModel[attributeName]" value="2"> name2</label></div></div>
 
 <p class="help-block help-block-error"></p>
-</div>
+</div> 
 HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
@@ -74,7 +74,7 @@ HTML;
 <div class="checkbox"><label><input type="checkbox" name="DynamicModel[attributeName][]" value="2"> name2</label></div></div>
 
 <p class="help-block help-block-error"></p>
-</div>
+</div> 
 HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
