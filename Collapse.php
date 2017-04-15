@@ -65,7 +65,8 @@ class Collapse extends Widget
      * - contentOptions: optional, the HTML attributes of the group's content
      *
      * Since version 2.0.7 you may also specify this property as key-value pairs, where the key refers to the
-     * `label` and the value refers to `content`, if it is a string or is interpreted as explained above if it is an array.
+     * `label` and the value refers to `content`. If value is a string it is interpreted as label. If it is
+     * an array, it is interpreted as explained above.
      *
      * For example:
      *
