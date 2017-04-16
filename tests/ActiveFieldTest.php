@@ -28,12 +28,11 @@ class ActiveFieldTest extends TestCase
 
     protected function setUp()
     {
-        parent::setUp();
         // dirty way to have Request object not throwing exception when running testHomeLinkNull()
         $_SERVER['SCRIPT_FILENAME'] = "index.php";
         $_SERVER['SCRIPT_NAME'] = "index.php";
 
-        $this->mockWebApplication();
+        parent::setUp();
 
         $this->helperModel = new DynamicModel(['attributeName']);
         ob_start();
