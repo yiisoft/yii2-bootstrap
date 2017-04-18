@@ -6,6 +6,9 @@ Yii Framework 2 bootstrap extension Change Log
 
 - Enh #107: Added `yii\bootstrap\Collapse::$autoCloseItems` to allow keeping multiple items open at the same time (cebe)
 - Enh #131: Added `tabContentOptions` to set HTML attributes for 'tab-content' container in `Tabs` widget (AndrewKorpusov)
+- Bug #157: Active status of multilevel submenu items of the `yii\bootstrap\Nav` class is determined correctly now (PowerGamer1)
+- Enh #64: Added simplified syntax for specifying `Collapse` widget `$items` (Faryshta, cebe)
+- Enh #131 Added `tabContentOptions` to set HTML attributes for 'tab-content' container in `Tabs` widget (AndrewKorpusov)
 - Enh #145: Added the ability to customize the class used to draw dropdowns in `yii\bootstrap\Nav`, `yii\bootstrapButtonDropdown` and `yii\bootstrap\Tab` widgets (PowerGamer1)
 - Enh #187: Added `yii\bootstrap\Tabs::activateFirstVisibleTab()` to set the first visible tab as active if no active tab is set (nilsburg)
 - Bug #126: `yii\bootstrap\ToggleButtonGroup` was unable to work without model (makroxyz)
