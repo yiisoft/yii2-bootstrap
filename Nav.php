@@ -107,9 +107,9 @@ class Nav extends Widget
     public $dropDownCaret;
     /**
      * @var string name of a class to use for rendering dropdowns within this widget. Defaults to [[Dropdown]].
-	 * @since 2.0.7
+     * @since 2.0.7
      */
-	public $dropdownClass = 'yii\bootstrap\Dropdown';
+    public $dropdownClass = 'yii\bootstrap\Dropdown';
 
 
     /**
@@ -192,14 +192,12 @@ class Nav extends Widget
                 $label .= ' ' . $this->dropDownCaret;
             }
             if (is_array($items)) {
-                if ($this->activateItems) {
-                    $items = $this->isChildActive($items, $active);
-                }
+                $items = $this->isChildActive($items, $active);
                 $items = $this->renderDropdown($items, $item);
             }
         }
 
-        if ($this->activateItems && $active) {
+        if ($active) {
             Html::addCssClass($options, 'active');
         }
 
@@ -216,9 +214,9 @@ class Nav extends Widget
      */
     protected function renderDropdown($items, $parentItem)
     {
-		/** @var Widget $dropdownClass */
-		$dropdownClass = $this->dropdownClass;
-		return $dropdownClass::widget([
+        /** @var Widget $dropdownClass */
+        $dropdownClass = $this->dropdownClass;
+        return $dropdownClass::widget([
             'options' => ArrayHelper::getValue($parentItem, 'dropDownOptions', []),
             'items' => $items,
             'encodeLabels' => $this->encodeLabels,
@@ -270,6 +268,9 @@ class Nav extends Widget
      */
     protected function isItemActive($item)
     {
+        if (!$this->activateItems) {
+            return false;
+        }
         if (isset($item['url']) && is_array($item['url']) && isset($item['url'][0])) {
             $route = $item['url'][0];
             if ($route[0] !== '/' && Yii::$app->controller) {
