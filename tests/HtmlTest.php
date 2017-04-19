@@ -81,4 +81,112 @@ class HtmlTest extends TestCase
     {
         $this->assertEquals($expectedHtml, Html::staticControl($value, $options));
     }
+    
+    /**
+     * @return array
+     */
+    public function dataProviderGridCol() {
+        return [
+            [
+                [1,2,3,4],
+                [],
+                '<div class="col-xs-1 col-sm-2 col-md-3 col-lg-4">'
+            ],
+            [
+                [1,2],
+                [
+                    "class" => "row",
+                ],
+                '<div class="row col-xs-1 col-sm-2">'
+            ],
+            [
+                [
+                    "xs" => 12,
+                    "lg" => 6,
+                ],
+                [],
+                '<div class="col-xs-12 col-lg-6">'
+            ],
+        ];
+    }
+    
+    /**
+     * @dataProvider dataProviderGridCol
+     * 
+     * @param array $value
+     * @param array $options
+     * @param string $expectedHtml
+     */
+    public function testGridCol(array $value, array $options, $expectedHtml) {
+        $this->assertEquals($expectedHtml, Html::beginGridCol($value, $options));
+    }
+    
+    /**
+     * @return array
+     */
+    public function dataProviderGridRow() {
+        return [
+            [
+                [],
+                '<div class="row">'
+            ],
+            [
+                [
+                    "class" => "form-control",
+                ],
+                '<div class="form-control row">'
+            ],
+        ];
+    }
+    
+    /**
+     * @dataProvider dataProviderGridRow
+     * 
+     * @param array $options
+     * @param string $expectedHtml
+     */
+    public function testGridRow(array $options, $expectedHtml) {
+        $this->assertEquals($expectedHtml, Html::beginGridRow($options));
+    }
+    
+    /**
+     * @return array
+     */
+    public function dataProviderGrid() {
+        return [
+            [
+                [
+                    4,8
+                ],
+                [
+                    "content1",
+                    "content2",
+                ],
+                '<div class="row"><div class="col-xs-4">content1</div><div class="col-xs-8">content2</div></div>'
+            ],
+            [
+                [
+                    "xs" => [12,12,12],
+                    "md" => [2,4,6],
+                ],
+                [
+                    "content1",
+                    "content2",
+                    "content3",
+                ],
+                '<div class="row"><div class="col-xs-12 col-md-2">content1</div><div class="col-xs-12 col-md-4">content2</div><div class="col-xs-12 col-md-6">content3</div></div>'
+            ],
+        ];
+    }
+    
+    /**
+     * @dataProvider dataProviderGrid
+     * 
+     * @param array $cols
+     * @param array $contents
+     * @param string $expectedHtml
+     */
+    public function testGrid(array $cols, array $contents, $expectedHtml) {
+        $this->assertEquals($expectedHtml, Html::grid($cols, $contents));
+    }
 } 
