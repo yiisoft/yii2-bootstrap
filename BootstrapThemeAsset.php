@@ -18,10 +18,19 @@ use yii\web\AssetBundle;
 class BootstrapThemeAsset extends AssetBundle
 {
     public $sourcePath = '@bower/bootstrap/dist';
-    public $css = [
-        'css/bootstrap-theme.css',
-    ];
     public $depends = [
         'yii\bootstrap\BootstrapAsset',
     ];
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        $this->css = [
+            'css/bootstrap-theme' . (YII_DEBUG ? '' : '.min') . '.css',
+        ];
+
+        parent::init();
+    }
 }
