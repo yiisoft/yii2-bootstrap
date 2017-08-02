@@ -51,7 +51,7 @@ class Modal extends Widget
     /**
      * @var array body options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
-     * @since 2.0.1
+     * @since 2.0.7
      */
     public $bodyOptions = ['class' => 'modal-body'];
     /**
