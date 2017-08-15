@@ -52,11 +52,11 @@ class ActiveFieldTest extends TestCase
 
         $expectedHtml = <<<HTML
 <div class="form-group field-dynamicmodel-attributename">
-<label class="control-label">Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename"><div class="radio"><label><input type="radio" name="DynamicModel[attributeName]" value="1"> name1</label></div>
-<div class="radio"><label><input type="radio" name="DynamicModel[attributeName]" value="2"> name2</label></div></div>
+<label class="form-control-label">Attribute Name</label>
+<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename"><div class="form-check"><label class="form-check-label"><input type="radio" class="form-check-input" name="DynamicModel[attributeName]" value="1"> name1</label></div>
+<div class="form-check"><label class="form-check-label"><input type="radio" class="form-check-input" name="DynamicModel[attributeName]" value="2"> name2</label></div></div>
 
-<p class="text-danger"></p>
+<div class="form-control-feedback"></div>
 </div>
 HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
@@ -68,11 +68,11 @@ HTML;
 
         $expectedHtml = <<<HTML
 <div class="form-group field-dynamicmodel-attributename">
-<label class="control-label">Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename"><div class="checkbox"><label><input type="checkbox" name="DynamicModel[attributeName][]" value="1"> name1</label></div>
-<div class="checkbox"><label><input type="checkbox" name="DynamicModel[attributeName][]" value="2"> name2</label></div></div>
+<label class="form-control-label">Attribute Name</label>
+<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename"><div class="form-check"><label class="form-check-label"><input type="checkbox" class="form-check-input" name="DynamicModel[attributeName][]" value="1"> name1</label></div>
+<div class="form-check"><label class="form-check-label"><input type="checkbox" class="form-check-input" name="DynamicModel[attributeName][]" value="2"> name2</label></div></div>
 
-<p class="text-danger"></p>
+<div class="form-control-feedback"></div>
 </div>
 HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
