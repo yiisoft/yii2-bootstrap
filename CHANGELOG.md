@@ -4,6 +4,7 @@ Yii Framework 2 bootstrap extension Change Log
 2.0.8 under development
 -----------------------
 
+- Enh #219: Add ability to use custom HTML in navbar-header (razvanphp)
 - Enh #171: Add ability to use a brandImage with the navbar (razvanphp)
 
 

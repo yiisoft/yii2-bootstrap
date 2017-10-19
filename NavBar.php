@@ -78,6 +78,10 @@ class NavBar extends Widget
      */
     public $brandOptions = [];
     /**
+     * @var string HTML content to be added in navbar-header div, for example, mobile search form.
+     */
+    public $headerContent;
+    /**
      * @var string text to show for screen readers for the button to toggle the navbar.
      */
     public $screenReaderToggleText = 'Toggle navigation';
@@ -126,6 +130,7 @@ class NavBar extends Widget
             Html::addCssClass($this->brandOptions, ['widget' => 'navbar-brand']);
             echo Html::a($this->brandLabel, $this->brandUrl === false ? Yii::$app->homeUrl : $this->brandUrl, $this->brandOptions);
         }
+        echo $this->headerContent;
         echo Html::endTag('div');
         Html::addCssClass($this->containerOptions, ['collapse' => 'collapse', 'widget' => 'navbar-collapse']);
         $options = $this->containerOptions;
