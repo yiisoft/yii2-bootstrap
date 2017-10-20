@@ -206,7 +206,6 @@ class ActiveField extends \yii\widgets\ActiveField
             if ($this->form->layout === 'horizontal') {
                 Html::addCssClass($this->wrapperOptions, $this->horizontalCssClasses['offset']);
             }
-            $this->labelOptions['class'] = null;
         }
 
         return parent::checkbox($options, false);

@@ -110,4 +110,30 @@ HTML;
 
         $this->assertContains('data-attribute="test"', $content);
     }
+
+    public function testCheckboxOptionsLabelClass()
+    {
+        $className = 'test-class';
+
+        $this->activeField->labelOptions = [
+            'class' => $className,
+        ];
+        $content = $this->activeField->checkbox()->render();
+
+        $this->assertContains("class=\"{$className}\"", $content);
+    }
+
+    public function testCheckboxLabelOptionsClass()
+    {
+        $className = 'test-class';
+
+        $content = $this->activeField->checkbox([
+                'label' => 'test-label',
+                'labelOptions' => [
+                    'class' => $className,
+                ],
+            ])->render();
+
+        $this->assertContains("class=\"{$className}\"", $content);
+    }
 }
