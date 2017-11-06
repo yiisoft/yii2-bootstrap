@@ -84,7 +84,8 @@ class ButtonDropdown extends Widget
         $options = $this->containerOptions;
         $tag = ArrayHelper::remove($options, 'tag', 'div');
 
-        $this->registerPlugin('dropdown');
+        BootstrapPluginAsset::register($this->getView());
+        $this->registerClientEvents();
         return implode("\n", [
             Html::beginTag($tag, $options),
             $this->renderButton(),
