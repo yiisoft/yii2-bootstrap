@@ -182,7 +182,7 @@ class Collapse extends Widget
                 $headerOptions['data-parent'] = '#' . $this->options['id'];
             }
             if($this->headerLink ===false){
-                ArrayHelper::merge($headerOptions,['data-target'=>'#'.$id]);
+                $headerOptions= ArrayHelper::merge($headerOptions,['data-target'=>'#'.$id]);
                 $headerToggle = Html::tag('div',$header, $headerOptions) . "\n";
             }else{
                 $headerToggle = Html::a($header, '#' . $id, $headerOptions) . "\n";
