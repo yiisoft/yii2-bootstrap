@@ -96,7 +96,11 @@ class Collapse extends Widget
      * @since 2.0.7
      */
     public $autoCloseItems = true;
-
+    
+     /**
+     * @var boolean whether head tag converts to 'a' or 'div' that may keep functional label inputs and other link structures 
+     */
+    public $headerTag= "a";
 
     /**
      * Initializes the widget.
@@ -177,7 +181,13 @@ class Collapse extends Widget
             if ($this->autoCloseItems) {
                 $headerOptions['data-parent'] = '#' . $this->options['id'];
             }
-            $headerToggle = Html::a($header, '#' . $id, $headerOptions) . "\n";
+            if($this->headerTag !="a"){
+                $headerOptions= ArrayHelper::merge($headerOptions,['data-target'=>'#'.$id]);
+                $headerToggle = Html::tag($this->headerTag,$header, $headerOptions) . "\n";
+            }else{
+                $headerToggle = Html::a($header, '#' . $id, $headerOptions) . "\n";
+            }
+            
 
             $header = Html::tag('h4', $headerToggle, ['class' => 'panel-title']);
 
