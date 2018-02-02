@@ -80,8 +80,58 @@ In the `composer.json` of your project, add the following lines in order to prev
 
 ```json
 "replace": {
-    "bower-asset/bootstrap": ">=3.3.5"
+    "bower-asset/bootstrap": ">=3.3.0"
 },
+```
+
+
+## Using CDN
+
+You may use Bootstrap assets from [official CDN](https://www.bootstrapcdn.com).
+
+In the `composer.json` of your project, add the following lines in order to prevent redundant Bootstrap asset installation:
+
+```json
+"replace": {
+    "bower-asset/bootstrap": ">=3.3.0"
+},
+```
+
+Configure 'assetManager' application component, overriding Bootstrap assent bundles with CDN links:
+
+```php
+return [
+    'components' => [
+        'assetManager' => [
+            // override bundles to use CDN :
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => [
+                    'sourcePath' => null,
+                    'baseUrl' => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7',
+                    'css' => [
+                        'css/bootstrap.min.css'
+                    ],
+                ],
+                'yii\bootstrap\BootstrapPluginAsset' => [
+                    'sourcePath' => null,
+                    'baseUrl' => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7',
+                    'js' => [
+                        'js/bootstrap.min.js'
+                    ],
+                ],
+                'yii\bootstrap\BootstrapThemeAsset' => [
+                    'sourcePath' => null,
+                    'baseUrl' => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7',
+                    'css' => [
+                        'css/bootstrap-theme.min.css'
+                    ]
+                ],
+            ],
+        ],
+        // ...
+    ],
+    // ...
+];
 ```
 
 
@@ -97,7 +147,7 @@ In the `composer.json` of your project, add the following lines in order to prev
 
 ```json
 "replace": {
-    "bower-asset/bootstrap": ">=3.3.5"
+    "bower-asset/bootstrap": ">=3.3.0"
 },
 ```
 
