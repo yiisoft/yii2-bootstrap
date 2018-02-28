@@ -127,7 +127,7 @@ class Nav extends Widget
         if ($this->dropDownCaret === null) {
             $this->dropDownCaret = '<span class="caret"></span>';
         }
-        Html::addCssClass($this->options, ['widget' => 'nav']);
+        Html::addCssClass($this->options, ['widget' => 'navbar-nav']);
     }
 
     /**
