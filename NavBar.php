@@ -80,7 +80,7 @@ class NavBar extends Widget
      * @var boolean whether the navbar content should be included in an inner div container which by default
      * adds left and right padding. Set this to false for a 100% width navbar.
      */
-    public $renderInnerContainer = true;
+    public $renderInnerContainer = false;
     /**
      * @var array the HTML attributes of the inner container.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
@@ -96,7 +96,7 @@ class NavBar extends Widget
         parent::init();
         $this->clientOptions = false;
         if (empty($this->options['class'])) {
-            Html::addCssClass($this->options, ['navbar', 'navbar-light', 'bg-faded']);
+            Html::addCssClass($this->options, ['navbar', 'navbar-expand-md', 'navbar-light', 'bg-faded']);
         } else {
             Html::addCssClass($this->options, ['widget' => 'navbar']);
         }
@@ -112,7 +112,6 @@ class NavBar extends Widget
             }
             echo Html::beginTag('div', $this->innerContainerOptions);
         }
-        echo Html::beginTag('div', ['class' => 'navbar-header']);
         if (!isset($this->containerOptions['id'])) {
             $this->containerOptions['id'] = "{$this->options['id']}-collapse";
         }
@@ -121,8 +120,7 @@ class NavBar extends Widget
             Html::addCssClass($this->brandOptions, ['widget' => 'navbar-brand']);
             echo Html::a($this->brandLabel, $this->brandUrl === false ? Yii::$app->homeUrl : $this->brandUrl, $this->brandOptions);
         }
-        echo Html::endTag('div');
-        Html::addCssClass($this->containerOptions, ['collapse' => 'collapse', 'widget' => 'navbar-toggleable-xs']);
+        Html::addCssClass($this->containerOptions, ['collapse' => 'collapse', 'widget' => 'navbar-collapse']);
         $options = $this->containerOptions;
         $tag = ArrayHelper::remove($options, 'tag', 'div');
         echo Html::beginTag($tag, $options);
@@ -149,12 +147,15 @@ class NavBar extends Widget
      */
     protected function renderToggleButton()
     {
-        $screenReader = "<span class=\"sr-only\">{$this->screenReaderToggleText}</span>";
+        $screenReader = "<span class="navbar-toggler-icon"></span>";
 
-        return Html::button("{$screenReader}\n&#9776;", [
-            'class' => 'navbar-toggler hidden-sm-up',
+        return Html::button("{$screenReader}\n", [
+            'class' => 'navbar-toggler',
             'data-toggle' => 'collapse',
             'data-target' => "#{$this->containerOptions['id']}",
+            'aria-controls' =>"{$this->containerOptions['id']}",
+            'aria-expanded' => 'false',
+            'aria-label' => "{$this->screenReaderToggleText}"
         ]);
     }
 }
