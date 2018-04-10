@@ -152,7 +152,7 @@ class Nav extends Widget
             $items[] = $this->renderItem($item);
         }
 
-        return Html::tag('ul', implode("\n", $items), $this->options);
+        return Html::tag('ul', implode('', $items), $this->options);
     }
 
     /**
