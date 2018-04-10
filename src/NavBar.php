@@ -164,7 +164,7 @@ class NavBar extends Widget
         $bar = Html::tag('span', '', ['class' => 'icon-bar']);
         $screenReader = "<span class=\"sr-only\">{$this->screenReaderToggleText}</span>";
 
-        return Html::button("{$screenReader}\n{$bar}\n{$bar}\n{$bar}", [
+        return Html::button("{$screenReader}{$bar}{$bar}{$bar}", [
             'class' => 'navbar-toggle',
             'data-toggle' => 'collapse',
             'data-target' => "#{$this->containerOptions['id']}",
