@@ -1,6 +1,6 @@
 {
     "name": "yiisoft/yii2-bootstrap",
-    "description": "The Twitter Bootstrap extension for the Yii framework",
+    "description": "The Twitter Bootstrap extension for the Yii framework - teste",
     "keywords": ["yii2", "bootstrap"],
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
@@ -33,9 +33,13 @@
     ],
     "require": {
         "yiisoft/yii2": "~2.0.6",
-        "bower-asset/bootstrap": "3.3.* | 3.2.* | 3.1.*"
+        "twbs/bootstrap": "^3.3.7.1"
     },
     "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/brunoroger/bootstrap"
+        },
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
