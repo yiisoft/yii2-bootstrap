@@ -74,14 +74,14 @@ class CollapseTest extends TestCase
 
         $this->assertEqualsWithoutLE(<<<HTML
 <div id="w0" class="panel-group">
-<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle" href="#w0-collapse1" data-toggle="collapse" data-parent="#w0">Collapsible Group Item #1</a>
+<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w0-collapse1" data-toggle="collapse" data-parent="#w0">Collapsible Group Item #1</a>
 </h4></div>
 <div id="w0-collapse1" class="panel-collapse collapse"><ul class="list-group">
 <li class="list-group-item">test content1</li>
 <li class="list-group-item">test content2</li>
 </ul>
 </div></div>
-<div id="testId" class="testClass panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle" href="#w0-collapse2" data-toggle="collapse" data-parent="#w0">Collapsible Group Item #2</a>
+<div id="testId" class="testClass panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w0-collapse2" data-toggle="collapse" data-parent="#w0">Collapsible Group Item #2</a>
 </h4></div>
 <div id="w0-collapse2" class="testContentOptions panel-collapse collapse"><ul class="list-group">
 <li class="list-group-item">test content1</li>
@@ -89,7 +89,7 @@ class CollapseTest extends TestCase
 </ul>
 <div class="panel-footer">Footer</div>
 </div></div>
-<div id="testId2" class="testClass2 panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle" href="#w0-collapse3" data-toggle="collapse" data-parent="#w0"><h1>Collapsible Group Item #3</h1></a>
+<div id="testId2" class="testClass2 panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w0-collapse3" data-toggle="collapse" data-parent="#w0"><h1>Collapsible Group Item #3</h1></a>
 </h4></div>
 <div id="w0-collapse3" class="testContentOptions2 panel-collapse collapse"><ul class="list-group">
 <li class="list-group-item"><h2>test content1</h2></li>
@@ -97,7 +97,7 @@ class CollapseTest extends TestCase
 </ul>
 <div class="panel-footer">Footer2</div>
 </div></div>
-<div id="testId3" class="testClass3 panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle" href="#w0-collapse4" data-toggle="collapse" data-parent="#w0">&lt;h1&gt;Collapsible Group Item #4&lt;/h1&gt;</a>
+<div id="testId3" class="testClass3 panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w0-collapse4" data-toggle="collapse" data-parent="#w0">&lt;h1&gt;Collapsible Group Item #4&lt;/h1&gt;</a>
 </h4></div>
 <div id="w0-collapse4" class="testContentOptions3 panel-collapse collapse"><ul class="list-group">
 <li class="list-group-item"><h2>test content1</h2></li>
@@ -135,19 +135,19 @@ HTML
 
         $this->assertEqualsWithoutLE(<<<HTML
 <div id="w0" class="panel-group">
-<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle" href="#w0-collapse1" data-toggle="collapse" data-parent="#w0">Item1</a>
+<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w0-collapse1" data-toggle="collapse" data-parent="#w0">Item1</a>
 </h4></div>
 <div id="w0-collapse1" class="panel-collapse collapse"><div class="panel-body">Content1</div>
 </div></div>
-<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle" href="#w0-collapse2" data-toggle="collapse" data-parent="#w0">Item2</a>
+<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w0-collapse2" data-toggle="collapse" data-parent="#w0">Item2</a>
 </h4></div>
 <div id="w0-collapse2" class="panel-collapse collapse"><div class="panel-body">Content2</div>
 </div></div>
-<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle" href="#w0-collapse3" data-toggle="collapse" data-parent="#w0">Item3</a>
+<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w0-collapse3" data-toggle="collapse" data-parent="#w0">Item3</a>
 </h4></div>
 <div id="w0-collapse3" class="panel-collapse collapse"><div class="panel-body">Content3</div>
 </div></div>
-<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle" href="#w0-collapse4" data-toggle="collapse" data-parent="#w0">FormField</a>
+<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w0-collapse4" data-toggle="collapse" data-parent="#w0">FormField</a>
 </h4></div>
 <div id="w0-collapse4" class="panel-collapse collapse"><div class="panel-body"><div class="form-group field-dynamicmodel-test">
 <input type="text" id="dynamicmodel-test" class="form-control" name="DynamicModel[test]">
@@ -203,7 +203,7 @@ HTML
 
         $this->assertEqualsWithoutLE(<<<HTML
 <div id="w0" class="panel-group">
-<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle" href="#w0-collapse1" data-toggle="collapse" data-parent="#w0">Collapsible Group Item #1</a>
+<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w0-collapse1" data-toggle="collapse" data-parent="#w0">Collapsible Group Item #1</a>
 </h4></div>
 <div id="w0-collapse1" class="panel-collapse collapse"><div class="panel-body"><div class="form-group field-singer-firstname">
 <input type="text" id="singer-firstname" class="form-control" name="Singer[firstName]">
@@ -262,7 +262,7 @@ HTML
                 'class' => 'custom-toggle',
             ],
         ]);
-        $this->assertContains('<h4 class="panel-title"><span class="custom-toggle collapse-toggle" data-toggle="collapse" ', $output);
+        $this->assertContains('<h4 class="panel-title"><span class="custom-toggle collapse-toggle collapsed" data-toggle="collapse" ', $output);
         $this->assertNotContains('<a', $output);
 
         $output = Collapse::widget([
@@ -272,7 +272,32 @@ HTML
                 'class' => ['widget' => 'custom-toggle'],
             ],
         ]);
-        $this->assertContains('<h4 class="panel-title"><span class="custom-toggle" data-toggle="collapse" ', $output);
+        $this->assertContains('<h4 class="panel-title"><span class="custom-toggle collapsed" data-toggle="collapse" ', $output);
         $this->assertNotContains('collapse-toggle', $output);
+    }
+
+    /**
+     * @depends testRender
+     */
+    public function testItemToggleTagClasses()
+    {
+        $items = [
+            [
+                'label' => 'Item 1',
+                'content' => 'Content 1',
+                'contentOptions' => [
+                    'class' => 'in'
+                ],
+            ],
+            [
+                'label' => 'Item 2',
+                'content' => 'Content 2',
+            ],
+        ];
+        $output = Collapse::widget([
+            'items' => $items,
+        ]);
+        $this->assertContains('<h4 class="panel-title"><a class="collapse-toggle" href="#w5-collapse1" data-toggle="collapse" ', $output);
+        $this->assertContains('<h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w5-collapse2" data-toggle="collapse" ', $output);
     }
 }

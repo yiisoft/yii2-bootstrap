@@ -184,11 +184,21 @@ class Collapse extends Widget
                 $header = Html::encode($header);
             }
 
+            $active = false;
+            if (isset($options['class'])) {
+                $classes = is_string($options['class']) ? explode(' ', $options['class']) : $options['class'];
+                $active = in_array('in', $classes);
+            }
+
             $itemToggleOptions = array_merge([
                 'tag' => 'a',
                 'data-toggle' => 'collapse',
             ], $this->itemToggleOptions);
             Html::addCssClass($itemToggleOptions, ['widget' => 'collapse-toggle']);
+
+            if (!$active) {
+                Html::addCssClass($itemToggleOptions, ['collapsed' => 'collapsed']);
+            }
 
             if ($this->autoCloseItems) {
                 $itemToggleOptions['data-parent'] = '#' . $this->options['id'];
