@@ -186,7 +186,7 @@ class Collapse extends Widget
 
             $active = false;
             if (isset($options['class'])) {
-                $classes = is_string($options['class']) ? explode(' ', $options['class']) : $options['class'];
+                $classes = is_string($options['class']) ? preg_split('/\s+/', $options['class'], -1, PREG_SPLIT_NO_EMPTY) : $options['class'];
                 $active = in_array('in', $classes);
             }
 
