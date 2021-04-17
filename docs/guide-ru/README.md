@@ -14,7 +14,7 @@
 * [Установка](installation.md)
 * [Базовое использование](basic-usage.md)
 
-Ипользование
+Иcпользование
 ----- 
 
 * [Виджеты Yii](usage-widgets.md)
