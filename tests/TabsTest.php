@@ -171,7 +171,7 @@ class TabsTest extends TestCase
                 ],
                 [
                     'label' => 'Tab 2',
-                    'content' => 'some content'                            
+                    'content' => 'some content'
                 ],
                 [
                     'label' => 'Tab 3',
@@ -182,7 +182,7 @@ class TabsTest extends TestCase
                     'content' => 'some content'
                 ]
             ]
-        ]);        
+        ]);
         $this->assertNotContains('<li class="active"><a href="#mytab-tab0" data-toggle="tab">Tab 1</a></li>', $html);
         $this->assertContains('<li class="active"><a href="#mytab-tab1" data-toggle="tab">Tab 2</a></li>', $html);
     }
@@ -213,5 +213,32 @@ class TabsTest extends TestCase
             ]
         ]);
         $this->assertContains('<li class="active"><a href="#mytab-tab2" data-toggle="tab">Tab 3</a></li>', $html);
+    }
+
+    public function testTemplate()
+    {
+        $html = Tabs::widget([
+            'template' => '<div class="container-class"><div class="headers-class">{headers}</div><div class="panes-class">{panes}</div></div>',
+            'id' => 'mytab',
+            'items' => [
+                [
+                    'label' => 'Tab 1',
+                    'content' => 'Content 1'
+                ],
+                [
+                    'label' => 'Tab 2',
+                    'content' => 'Content 2'
+                ],
+            ]
+        ]);
+
+        $expected = <<<EXPECTED
+<div class="container-class"><div class="headers-class"><ul id="mytab" class="nav nav-tabs"><li class="active"><a href="#mytab-tab0" data-toggle="tab">Tab 1</a></li>
+<li><a href="#mytab-tab1" data-toggle="tab">Tab 2</a></li></ul></div><div class="panes-class">
+<div class="tab-content"><div id="mytab-tab0" class="tab-pane active">Content 1</div>
+<div id="mytab-tab1" class="tab-pane">Content 2</div></div></div></div>
+EXPECTED;
+
+        $this->assertEqualsWithoutLE($expected, $html);
     }
 }
