@@ -129,13 +129,13 @@ class Tabs extends Widget
      * @since 2.0.7
      */
     public $dropdownClass = 'yii\bootstrap\Dropdown';
-
     /**
      * @var string template for layout for the headers and the panes. Can be helpful, for example, if a left
      * vertical tabs are required. Defaults to `{headers}{panes}`
      * @since 2.0.11
      */
     public $template = '{headers}{panes}';
+
 
     /**
      * Initializes the widget.
