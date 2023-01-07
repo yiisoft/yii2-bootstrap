@@ -3,7 +3,7 @@
 
 ## Получение Composer пакета
 
-Предпочтительный способ установки расширения через [composer](http://getcomposer.org/download/).
+Предпочтительный способ установки расширения через [composer](https://getcomposer.org/download/).
 
 Для этого запустите
 
