@@ -1,8 +1,8 @@
 <?php
 /**
- * @link http://www.yiiframework.com/
+ * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license https://www.yiiframework.com/license/
  */
 
 namespace yii\bootstrap;
@@ -21,7 +21,7 @@ use yii\base\InvalidConfigException;
  * ]) ?>
  * ```
  *
- * @see http://getbootstrap.com/javascript/#buttons-checkbox-radio
+ * @see https://getbootstrap.com/javascript/#buttons-checkbox-radio
  *
  * @author Paul Klimov <klimov.paul@gmail.com>
  * @since 2.0.6
@@ -79,9 +79,9 @@ class ToggleButtonGroup extends InputWidget
                 }
             case 'radio':
                 if ($this->hasModel()) {
-                    return Html::activeRadioList($this->model, $this->attribute, $this->items, $this->options); 
+                    return Html::activeRadioList($this->model, $this->attribute, $this->items, $this->options);
                 } else {
-                    return Html::radioList($this->name, $this->value, $this->items, $this->options); 
+                    return Html::radioList($this->name, $this->value, $this->items, $this->options);
                 }
             default:
                 throw new InvalidConfigException("Unsupported type '{$this->type}'");
