@@ -1,8 +1,8 @@
 <?php
 /**
- * @link http://www.yiiframework.com/
+ * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license https://www.yiiframework.com/license/
  */
 
 namespace yii\bootstrap;
@@ -29,7 +29,7 @@ class BaseHtml extends \yii\helpers\Html
      * - prefix: string, prefix which should be used to compose tag class, by default 'glyphicon glyphicon-' is used.
      *
      * @return string icon HTML.
-     * @see http://getbootstrap.com/components/#glyphicons
+     * @see https://getbootstrap.com/components/#glyphicons
      */
     public static function icon($name, $options = [])
     {
@@ -51,7 +51,7 @@ class BaseHtml extends \yii\helpers\Html
      * - encode: bool, whether value should be HTML-encoded or not.
      *
      * @return string generated HTML
-     * @see http://getbootstrap.com/css/#forms-controls-static
+     * @see https://getbootstrap.com/css/#forms-controls-static
      */
     public static function staticControl($value, $options = [])
     {
