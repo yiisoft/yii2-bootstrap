@@ -1,12 +1,12 @@
 <p align="center">
-    <a href="https://getbootstrap.com/" target="_blank" rel="external">
+    <a href="https://getbootstrap.com/docs/3.4/" target="_blank" rel="external">
         <img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" height="80px">
     </a>
     <h1 align="center">Twitter Bootstrap Extension for Yii 2</h1>
     <br>
 </p>
 
-This is the Twitter Bootstrap extension for [Yii framework 2.0](https://www.yiiframework.com). It encapsulates [Bootstrap 3](https://getbootstrap.com/) components
+This is the Twitter Bootstrap extension for [Yii framework 2.0](https://www.yiiframework.com). It encapsulates [Bootstrap 3](https://getbootstrap.com/docs/3.4/) components
 and plugins in terms of Yii widgets, and thus makes using Bootstrap components/plugins
 in Yii applications extremely easy.
 
