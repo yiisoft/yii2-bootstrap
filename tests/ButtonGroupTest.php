@@ -21,9 +21,9 @@ class ButtonGroupTest extends TestCase
             ],
         ]);
 
-        static::assertContains('button-A', $out);
-        static::assertContains('button-B', $out);
-        static::assertContains('button-B', $out);
-        static::assertNotContains('button-C', $out);
+        static::assertStringContainsString('button-A', $out);
+        static::assertStringContainsString('button-B', $out);
+        static::assertStringContainsString('button-B', $out);
+        static::assertStringNotContainsString('button-C', $out);
     }
 }
