@@ -5,7 +5,7 @@ use yii\bootstrap\NavBar;
 
 /**
  * Tests for NavBar widget
- * 
+ *
  * @group bootstrap
  */
 class NavBarTest extends TestCase
@@ -39,7 +39,10 @@ EXPECTED;
             'brandUrl' => '/',
         ]);
 
-        $this->assertContains('<a class="navbar-brand" href="/"><img src="/images/test.jpg" alt=""></a>', $out);
+        $this->assertStringContainsString(
+            '<a class="navbar-brand" href="/"><img src="/images/test.jpg" alt=""></a>',
+            $out,
+        );
     }
 
     public function testHeaderContent()
@@ -57,6 +60,6 @@ HTML;
             'headerContent' => $testContent,
         ]);
 
-        $this->assertContains($testContent, $out);
+        $this->assertStringContainsString($testContent, $out);
     }
 }

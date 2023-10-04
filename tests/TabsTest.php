@@ -82,7 +82,7 @@ class TabsTest extends TestCase
         ];
 
         foreach ($shouldContain as $string) {
-            $this->assertContains($string, $out);
+            $this->assertStringContainsString($string, $out);
         }
     }
 
@@ -112,11 +112,11 @@ class TabsTest extends TestCase
             ]
         ]);
 
-        $this->assertNotContains('InvisiblePage', $html);
-        $this->assertNotContains('Invisible Page Content', $html);
-        $this->assertNotContains('InvisibleItem', $html);
-        $this->assertNotContains('Invisible Item Content', $html);
-        $this->assertNotContains('Invisible External Link', $html);
+        $this->assertStringNotContainsString('InvisiblePage', $html);
+        $this->assertStringNotContainsString('Invisible Page Content', $html);
+        $this->assertStringNotContainsString('InvisibleItem', $html);
+        $this->assertStringNotContainsString('Invisible Item Content', $html);
+        $this->assertStringNotContainsString('Invisible External Link', $html);
     }
 
     public function testItem()
@@ -136,7 +136,7 @@ class TabsTest extends TestCase
             'renderTabContent' => true,
         ]);
 
-        $this->assertContains('<' . $checkTag, $out);
+        $this->assertStringContainsString('<' . $checkTag, $out);
     }
 
     public function testTabContentOptions()
@@ -155,8 +155,8 @@ class TabsTest extends TestCase
             ]
         ]);
 
-        $this->assertContains($checkAttribute . '=', $out);
-        $this->assertContains($checkValue, $out);
+        $this->assertStringContainsString($checkAttribute . '=', $out);
+        $this->assertStringContainsString($checkValue, $out);
     }
 
     public function testActivateFirstVisibleTab()
@@ -183,8 +183,14 @@ class TabsTest extends TestCase
                 ]
             ]
         ]);
-        $this->assertNotContains('<li class="active"><a href="#mytab-tab0" data-toggle="tab">Tab 1</a></li>', $html);
-        $this->assertContains('<li class="active"><a href="#mytab-tab1" data-toggle="tab">Tab 2</a></li>', $html);
+        $this->assertStringNotContainsString(
+            '<li class="active"><a href="#mytab-tab0" data-toggle="tab">Tab 1</a></li>',
+            $html,
+        );
+        $this->assertStringContainsString(
+            '<li class="active"><a href="#mytab-tab1" data-toggle="tab">Tab 2</a></li>',
+            $html,
+        );
     }
 
     public function testActivateTab()
@@ -212,7 +218,10 @@ class TabsTest extends TestCase
                 ]
             ]
         ]);
-        $this->assertContains('<li class="active"><a href="#mytab-tab2" data-toggle="tab">Tab 3</a></li>', $html);
+        $this->assertStringContainsString(
+            '<li class="active"><a href="#mytab-tab2" data-toggle="tab">Tab 3</a></li>',
+            $html,
+        );
     }
 
     public function testTemplate()

@@ -5,7 +5,7 @@ Yii communities listed at https://github.com/yiisoft/yii2/wiki/communities
 
 ### What steps will reproduce the problem?
 
-### What's expected?
+### What is the expected result?
 
 ### What do you get instead?
 
