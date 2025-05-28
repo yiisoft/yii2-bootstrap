@@ -13,7 +13,7 @@ use yii\web\Controller;
  */
 class NavTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->mockWebApplication([
             'components' => [
@@ -70,7 +70,7 @@ EXPECTED;
 
         $this->assertEqualsWithoutLE($expected, $out);
     }
-    
+
     public function testRenderDropDownWithDropDownOptions()
     {
         Nav::$counter = 0;

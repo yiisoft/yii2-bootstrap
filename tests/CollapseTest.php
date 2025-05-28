@@ -2,6 +2,7 @@
 namespace yiiunit\extensions\bootstrap;
 
 use yii\base\DynamicModel;
+use yii\base\InvalidConfigException;
 use yii\bootstrap\Collapse;
 use yii\widgets\ActiveForm;
 
@@ -170,13 +171,13 @@ HTML
 
     /**
      * @dataProvider invalidItemsProvider
-     * @expectedException \yii\base\InvalidConfigException
      */
     public function testMissingLabel($items)
     {
-        Collapse::widget([
-            'items' => $items,
-        ]);
+        $this->expectException(InvalidConfigException::class);
+        $this->expectExceptionMessage("The 'label' option is required.");
+
+        Collapse::widget(['items' => $items]);
     }
 
     /**
@@ -231,12 +232,12 @@ HTML
         $output = Collapse::widget([
             'items' => $items
         ]);
-        $this->assertContains('data-parent="', $output);
+        $this->assertStringContainsString('data-parent="', $output);
         $output = Collapse::widget([
             'autoCloseItems' => false,
             'items' => $items
         ]);
-        $this->assertNotContains('data-parent="', $output);
+        $this->assertStringNotContainsString('data-parent="', $output);
     }
 
     /**
@@ -262,8 +263,11 @@ HTML
                 'class' => 'custom-toggle',
             ],
         ]);
-        $this->assertContains('<h4 class="panel-title"><span class="custom-toggle collapse-toggle collapsed" data-toggle="collapse" ', $output);
-        $this->assertNotContains('<a', $output);
+        $this->assertStringContainsString(
+            '<h4 class="panel-title"><span class="custom-toggle collapse-toggle collapsed" data-toggle="collapse" ',
+            $output,
+        );
+        $this->assertStringNotContainsString('<a', $output);
 
         $output = Collapse::widget([
             'items' => $items,
@@ -272,8 +276,11 @@ HTML
                 'class' => ['widget' => 'custom-toggle'],
             ],
         ]);
-        $this->assertContains('<h4 class="panel-title"><span class="custom-toggle collapsed" data-toggle="collapse" ', $output);
-        $this->assertNotContains('collapse-toggle', $output);
+        $this->assertStringContainsString(
+            '<h4 class="panel-title"><span class="custom-toggle collapsed" data-toggle="collapse" ',
+            $output,
+        );
+        $this->assertStringNotContainsString('collapse-toggle', $output);
     }
 
     /**
@@ -297,7 +304,13 @@ HTML
         $output = Collapse::widget([
             'items' => $items,
         ]);
-        $this->assertContains('<h4 class="panel-title"><a class="collapse-toggle" href="#w5-collapse1" data-toggle="collapse" ', $output);
-        $this->assertContains('<h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w5-collapse2" data-toggle="collapse" ', $output);
+        $this->assertStringContainsString(
+            '<h4 class="panel-title"><a class="collapse-toggle" href="#w5-collapse1" data-toggle="collapse" ',
+            $output,
+        );
+        $this->assertStringContainsString(
+            '<h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w5-collapse2" data-toggle="collapse" ',
+            $output,
+        );
     }
 }

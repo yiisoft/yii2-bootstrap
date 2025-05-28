@@ -18,6 +18,10 @@ Documentation is at [docs/guide/README.md](docs/guide/README.md).
 [![Total Downloads](https://poser.pugx.org/yiisoft/yii2-bootstrap/downloads.png)](https://packagist.org/packages/yiisoft/yii2-bootstrap)
 [![Build Status](https://github.com/yiisoft/yii2-bootstrap/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-bootstrap/actions)
 
+Requirements
+------------
+
+- PHP 8.1 or higher.
 
 Installation
 ------------
@@ -27,13 +31,13 @@ The preferred way to install this extension is through [composer](https://getcom
 Either run
 
 ```
-php composer.phar require --prefer-dist yiisoft/yii2-bootstrap
+php composer.phar require --prefer-dist yiisoft/yii2-bootstrap:^22.x-dev
 ```
 
 or add
 
 ```
-"yiisoft/yii2-bootstrap": "~2.0.0"
+"yiisoft/yii2-bootstrap": "^22.x-dev"
 ```
 
 to the require section of your `composer.json` file.
