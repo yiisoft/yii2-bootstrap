@@ -30,3 +30,7 @@ phpunit.phar
 /tests/docker
 /tests/dockerids
 
+# nodejs
+/node_modules
+/package-lock.json
+.phpunit.result.cache
