@@ -4,8 +4,8 @@ Yii Framework 2 bootstrap extension Change Log
 3.0.0 under development
 ------------------------
 
-- Enh #: Applying Yii2 coding standards (@s1lver)
-- Enh #: Raise min version to PHP 7.4 (@s1lver)
+- Enh #281: Applying Yii2 coding standards (@s1lver)
+- Enh #281: Raise min version to PHP 7.4 (@s1lver)
 
 
 2.0.11 August 09, 2021
