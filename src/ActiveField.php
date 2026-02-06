@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -286,7 +287,7 @@ class ActiveField extends \yii\widgets\ActiveField
                     'labelOptions' => ['class' => 'radio-inline'],
                 ];
             }
-        }  elseif (!isset($options['item'])) {
+        } elseif (!isset($options['item'])) {
             $itemOptions = isset($options['itemOptions']) ? $options['itemOptions'] : [];
             $encode = ArrayHelper::getValue($options, 'encode', true);
             $options['item'] = function ($index, $label, $name, $checked, $value) use ($itemOptions, $encode) {

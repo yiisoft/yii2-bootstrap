@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -34,9 +35,9 @@ use yii\helpers\ArrayHelper;
  */
 class Modal extends Widget
 {
-    const SIZE_LARGE = "modal-lg";
-    const SIZE_SMALL = "modal-sm";
-    const SIZE_DEFAULT = "";
+    public const SIZE_LARGE = 'modal-lg';
+    public const SIZE_SMALL = 'modal-sm';
+    public const SIZE_DEFAULT = '';
 
     /**
      * @var string the header content in the modal window.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -196,7 +197,7 @@ class Tabs extends Widget
                 }
                 /** @var Widget $dropdownClass */
                 $dropdownClass = $this->dropdownClass;
-                $header = Html::a($label, "#", $linkOptions) . "\n"
+                $header = Html::a($label, '#', $linkOptions) . "\n"
                     . $dropdownClass::widget(['items' => $item['items'], 'clientOptions' => false, 'view' => $this->getView()]);
             } else {
                 $options = array_merge($this->itemOptions, ArrayHelper::getValue($item, 'options', []));
@@ -233,7 +234,6 @@ class Tabs extends Widget
             '{headers}' => $headersHtml,
             '{panes}' => $panesHtml,
         ]);
-
     }
 
     /**
