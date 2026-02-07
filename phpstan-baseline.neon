@@ -871,12 +871,6 @@ parameters:
 			path: tests/NavTest.php
 
 		-
-			message: '#^Method yiiunit\\extensions\\bootstrap\\NavTest\:\:removeMockedAction\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: tests/NavTest.php
-
-		-
 			message: '#^Property yii\\base\\Controller\<yii\\console\\Application\|yii\\web\\Application\<yii\\web\\IdentityInterface\>\>\:\:\$module \(yii\\console\\Application\|yii\\web\\Application\<yii\\web\\IdentityInterface\>\) does not accept yii\\base\\Module\.$#'
 			identifier: assign.propertyType
 			count: 1
