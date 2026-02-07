@@ -322,7 +322,7 @@ EXPECTED;
         }
     }
 
-    protected function removeMockedAction()
+    protected function removeMockedAction(): void
     {
         \Yii::$app->controller = null;
     }
