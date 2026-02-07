@@ -9,7 +9,7 @@ use yii\bootstrap\Modal;
  */
 class ModalTest extends TestCase
 {
-    public function testBodyOptions()
+    public function testBodyOptions(): void
     {
         $out = Modal::widget([
             'bodyOptions' => ['class' => 'modal-body test', 'style' => 'text-align:center;']

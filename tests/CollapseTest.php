@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap;
 
 use yii\base\DynamicModel;
@@ -10,7 +11,7 @@ use yii\widgets\ActiveForm;
  */
 class CollapseTest extends TestCase
 {
-    public function testRender()
+    public function testRender(): void
     {
         Collapse::$counter = 0;
         $output = Collapse::widget([
@@ -111,7 +112,7 @@ HTML
         , $output);
     }
 
-    public function testLabelKeys()
+    public function testLabelKeys(): void
     {
         ob_start();
         $form = ActiveForm::begin(['action' => '/something']);
@@ -129,7 +130,7 @@ HTML
                     'label' => 'Item3',
                     'content' => 'Content3',
                 ],
-                'FormField' => $form->field(new DynamicModel(['test']), 'test',['template' => '{input}']),
+                'FormField' => $form->field(new DynamicModel(['test']), 'test', ['template' => '{input}']),
             ]
         ]);
 
@@ -159,7 +160,7 @@ HTML
         , $output);
     }
 
-    public function invalidItemsProvider()
+    public function invalidItemsProvider(): array
     {
         return [
             [ ['content'] ], // only content without label key
@@ -170,10 +171,10 @@ HTML
 
     /**
      * @dataProvider invalidItemsProvider
-     * @expectedException \yii\base\InvalidConfigException
      */
-    public function testMissingLabel($items)
+    public function testMissingLabel($items): void
     {
+        $this->expectException(\yii\base\InvalidConfigException::class);
         Collapse::widget([
             'items' => $items,
         ]);
@@ -182,14 +183,14 @@ HTML
     /**
      * @see https://github.com/yiisoft/yii2/issues/8357
      */
-    public function testRenderObject()
+    public function testRenderObject(): void
     {
         $template = ['template' => '{input}'];
         ob_start();
         $form = ActiveForm::begin(['action' => '/something']);
         ActiveForm::end();
         ob_end_clean();
-        $model = new data\Singer;
+        $model = new data\Singer();
 
         Collapse::$counter = 0;
         $output = Collapse::widget([
@@ -215,7 +216,7 @@ HTML
         , $output);
     }
 
-    public function testAutoCloseItems()
+    public function testAutoCloseItems(): void
     {
         $items = [
             [
@@ -231,18 +232,18 @@ HTML
         $output = Collapse::widget([
             'items' => $items
         ]);
-        $this->assertContains('data-parent="', $output);
+        $this->assertStringContainsString('data-parent="', $output);
         $output = Collapse::widget([
             'autoCloseItems' => false,
             'items' => $items
         ]);
-        $this->assertNotContains('data-parent="', $output);
+        $this->assertStringNotContainsString('data-parent="', $output);
     }
 
     /**
      * @depends testRender
      */
-    public function testItemToggleTag()
+    public function testItemToggleTag(): void
     {
         $items = [
             [
@@ -262,8 +263,8 @@ HTML
                 'class' => 'custom-toggle',
             ],
         ]);
-        $this->assertContains('<h4 class="panel-title"><span class="custom-toggle collapse-toggle collapsed" data-toggle="collapse" ', $output);
-        $this->assertNotContains('<a', $output);
+        $this->assertStringContainsString('<h4 class="panel-title"><span class="custom-toggle collapse-toggle collapsed" data-toggle="collapse" ', $output);
+        $this->assertStringNotContainsString('<a', $output);
 
         $output = Collapse::widget([
             'items' => $items,
@@ -272,14 +273,14 @@ HTML
                 'class' => ['widget' => 'custom-toggle'],
             ],
         ]);
-        $this->assertContains('<h4 class="panel-title"><span class="custom-toggle collapsed" data-toggle="collapse" ', $output);
-        $this->assertNotContains('collapse-toggle', $output);
+        $this->assertStringContainsString('<h4 class="panel-title"><span class="custom-toggle collapsed" data-toggle="collapse" ', $output);
+        $this->assertStringNotContainsString('collapse-toggle', $output);
     }
 
     /**
      * @depends testRender
      */
-    public function testItemToggleTagClasses()
+    public function testItemToggleTagClasses(): void
     {
         $items = [
             [
@@ -297,7 +298,7 @@ HTML
         $output = Collapse::widget([
             'items' => $items,
         ]);
-        $this->assertContains('<h4 class="panel-title"><a class="collapse-toggle" href="#w5-collapse1" data-toggle="collapse" ', $output);
-        $this->assertContains('<h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w5-collapse2" data-toggle="collapse" ', $output);
+        $this->assertStringContainsString('<h4 class="panel-title"><a class="collapse-toggle" href="#w5-collapse1" data-toggle="collapse" ', $output);
+        $this->assertStringContainsString('<h4 class="panel-title"><a class="collapse-toggle collapsed" href="#w5-collapse2" data-toggle="collapse" ', $output);
     }
 }

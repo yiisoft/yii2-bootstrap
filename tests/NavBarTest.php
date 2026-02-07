@@ -1,16 +1,17 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap;
 
 use yii\bootstrap\NavBar;
 
 /**
  * Tests for NavBar widget
- * 
+ *
  * @group bootstrap
  */
 class NavBarTest extends TestCase
 {
-    public function testRender()
+    public function testRender(): void
     {
         NavBar::$counter = 0;
 
@@ -32,17 +33,17 @@ EXPECTED;
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    public function testBrandImage()
+    public function testBrandImage(): void
     {
         $out = NavBar::widget([
             'brandImage' => '/images/test.jpg',
             'brandUrl' => '/',
         ]);
 
-        $this->assertContains('<a class="navbar-brand" href="/"><img src="/images/test.jpg" alt=""></a>', $out);
+        $this->assertStringContainsString('<a class="navbar-brand" href="/"><img src="/images/test.jpg" alt=""></a>', $out);
     }
 
-    public function testHeaderContent()
+    public function testHeaderContent(): void
     {
         $testContent = <<<HTML
 <form class="navbar-form navbar-left">
@@ -57,6 +58,6 @@ HTML;
             'headerContent' => $testContent,
         ]);
 
-        $this->assertContains($testContent, $out);
+        $this->assertStringContainsString($testContent, $out);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap;
 
 use yii\bootstrap\Button;
@@ -9,7 +10,7 @@ use yii\bootstrap\ButtonGroup;
  */
 class ButtonGroupTest extends TestCase
 {
-    public function testContainerOptions()
+    public function testContainerOptions(): void
     {
         ButtonGroup::$counter = 0;
         $out = ButtonGroup::widget([
@@ -21,9 +22,9 @@ class ButtonGroupTest extends TestCase
             ],
         ]);
 
-        static::assertContains('button-A', $out);
-        static::assertContains('button-B', $out);
-        static::assertContains('button-B', $out);
-        static::assertNotContains('button-C', $out);
+        static::assertStringContainsString('button-A', $out);
+        static::assertStringContainsString('button-B', $out);
+        static::assertStringContainsString('button-B', $out);
+        static::assertStringNotContainsString('button-C', $out);
     }
 }

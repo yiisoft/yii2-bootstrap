@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap;
 
 use yii\bootstrap\ButtonDropdown;
@@ -8,9 +9,9 @@ use yii\bootstrap\ButtonDropdown;
  */
 class ButtonDropdownTest extends TestCase
 {
-    public function testContainerOptions()
+    public function testContainerOptions(): void
     {
-        $containerClass = "dropup";
+        $containerClass = 'dropup';
 
         ButtonDropdown::$counter = 0;
         $out = ButtonDropdown::widget([
@@ -26,6 +27,6 @@ class ButtonDropdownTest extends TestCase
             ],
         ]);
 
-        $this->assertContains("$containerClass btn-group", $out);
+        $this->assertStringContainsString("$containerClass btn-group", $out);
     }
 }
