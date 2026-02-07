@@ -311,7 +311,7 @@ EXPECTED;
     * @param string $moduleID
     * @param array  $params
     */
-    protected function mockAction($controllerId, $actionID, $moduleID = null, $params = [])
+    protected function mockAction($controllerId, $actionID, $moduleID = null, $params = []): void
     {
         \Yii::$app->controller = $controller = new Controller($controllerId, \Yii::$app);
         $controller->actionParams = $params;
