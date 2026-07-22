@@ -85,7 +85,7 @@ class Modal extends Widget
      */
     public $closeButton = [];
     /**
-     * @var array the options for rendering the toggle button tag.
+     * @var array|false the options for rendering the toggle button tag.
      * The toggle button is used to toggle the visibility of the modal window.
      * If this property is false, no toggle button will be rendered.
      *
