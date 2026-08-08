@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -73,6 +74,15 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * @var array HTML attributes for the form tag. Default is `[]`.
      */
     public $options = [];
+    /**
+     * @var string the CSS class that is added to a field container when the associated attribute has validation error.
+     */
+    public $errorCssClass = 'has-error';
+    /**
+     * @var string the CSS class that is added to a field container when the associated attribute is successfully
+     * validated.
+     */
+    public $successCssClass = 'has-success';
     /**
      * @var string the form layout. Either 'default', 'horizontal' or 'inline'.
      * By choosing a layout, an appropriate default field configuration is applied. This will

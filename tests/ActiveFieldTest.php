@@ -5,7 +5,6 @@ namespace yiiunit\extensions\bootstrap;
 use yii\base\DynamicModel;
 use yii\bootstrap\ActiveField;
 use yii\bootstrap\ActiveForm;
-use Yii;
 use yiiunit\extensions\bootstrap\data\ExtendedActiveField;
 
 class ActiveFieldTest extends TestCase
@@ -30,8 +29,8 @@ class ActiveFieldTest extends TestCase
     protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testHomeLinkNull()
-        $_SERVER['SCRIPT_FILENAME'] = "index.php";
-        $_SERVER['SCRIPT_NAME'] = "index.php";
+        $_SERVER['SCRIPT_FILENAME'] = 'index.php';
+        $_SERVER['SCRIPT_NAME'] = 'index.php';
 
         parent::setUp();
 
@@ -48,7 +47,7 @@ class ActiveFieldTest extends TestCase
 
     // Tests :
 
-    public function testRadioList()
+    public function testRadioList(): void
     {
         $html = $this->activeField->radioList([1 => 'name1', 2 => 'name2'])->render();
 
@@ -64,7 +63,7 @@ HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
 
-    public function testCheckboxList()
+    public function testCheckboxList(): void
     {
         $html = $this->activeField->checkboxList([1 => 'name1', 2 => 'name2'])->render();
 
@@ -85,7 +84,7 @@ HTML;
      *
      * @see https://github.com/yiisoft/yii2-bootstrap/issues/81
      */
-    public function testRadioListItemOptions()
+    public function testRadioListItemOptions(): void
     {
         $content = $this->activeField->radioList([1 => 'name1', 2 => 'name2'], [
             'itemOptions' => [
@@ -101,7 +100,7 @@ HTML;
      *
      * @see https://github.com/yiisoft/yii2-bootstrap/issues/81
      */
-    public function testCheckboxListItemOptions()
+    public function testCheckboxListItemOptions(): void
     {
         $content = $this->activeField->checkboxList([1 => 'name1', 2 => 'name2'], [
             'itemOptions' => [
@@ -112,7 +111,7 @@ HTML;
         $this->assertStringContainsString('data-attribute="test"', $content);
     }
 
-    public function testHorizontalCssClasses()
+    public function testHorizontalCssClasses(): void
     {
         $this->helperForm->layout = 'horizontal';
 
@@ -137,7 +136,7 @@ EXPECTED;
     /**
      * @depends testHorizontalCssClasses
      */
-    public function testHorizontalCssClassesOverride()
+    public function testHorizontalCssClassesOverride(): void
     {
         $this->helperForm->layout = 'horizontal';
 

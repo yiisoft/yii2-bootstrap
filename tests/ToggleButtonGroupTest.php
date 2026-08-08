@@ -10,7 +10,7 @@ use yii\bootstrap\ToggleButtonGroup;
  */
 class ToggleButtonGroupTest extends TestCase
 {
-    public function testCheckbox()
+    public function testCheckbox(): void
     {
         ToggleButtonGroup::$counter = 0;
         $html = ToggleButtonGroup::widget([
@@ -30,7 +30,7 @@ HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
 
-    public function testRadio()
+    public function testRadio(): void
     {
         ToggleButtonGroup::$counter = 0;
         $html = ToggleButtonGroup::widget([

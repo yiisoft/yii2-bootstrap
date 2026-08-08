@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap;
 
 use yii\bootstrap\Tabs;
@@ -16,7 +17,7 @@ class TabsTest extends TestCase
      *
      * @see https://github.com/yiisoft/yii2/issues/6150
      */
-    public function testIds()
+    public function testIds(): void
     {
         Tabs::$counter = 0;
         $out = Tabs::widget([
@@ -77,8 +78,8 @@ class TabsTest extends TestCase
             "id=\"$page3\"",
             "id=\"$page4\"",
             "id=\"$page5\"",
-            Html::a($extAnchor1,$extUrl1),
-            Html::a($extAnchor2,$extUrl2, ['tabindex' => -1]),
+            Html::a($extAnchor1, $extUrl1),
+            Html::a($extAnchor2, $extUrl2, ['tabindex' => -1]),
         ];
 
         foreach ($shouldContain as $string) {
@@ -86,7 +87,7 @@ class TabsTest extends TestCase
         }
     }
 
-    public function testVisible()
+    public function testVisible(): void
     {
         Tabs::$counter = 0;
         $html = Tabs::widget([
@@ -119,7 +120,7 @@ class TabsTest extends TestCase
         $this->assertStringNotContainsString('Invisible External Link', $html);
     }
 
-    public function testItem()
+    public function testItem(): void
     {
         $checkTag = 'article';
 
@@ -139,10 +140,10 @@ class TabsTest extends TestCase
         $this->assertStringContainsString('<' . $checkTag, $out);
     }
 
-    public function testTabContentOptions()
+    public function testTabContentOptions(): void
     {
-        $checkAttribute = "test_attribute";
-        $checkValue = "check_attribute";
+        $checkAttribute = 'test_attribute';
+        $checkValue = 'check_attribute';
 
         $out = Tabs::widget([
             'items' => [
@@ -159,10 +160,10 @@ class TabsTest extends TestCase
         $this->assertStringContainsString($checkValue, $out);
     }
 
-    public function testActivateFirstVisibleTab()
+    public function testActivateFirstVisibleTab(): void
     {
         $html = Tabs::widget([
-            'id'=>'mytab',
+            'id' => 'mytab',
             'items' => [
                 [
                     'label' => 'Tab 1',
@@ -183,25 +184,19 @@ class TabsTest extends TestCase
                 ]
             ]
         ]);
-        $this->assertStringNotContainsString(
-            '<li class="active"><a href="#mytab-tab0" data-toggle="tab">Tab 1</a></li>',
-            $html,
-        );
-        $this->assertStringContainsString(
-            '<li class="active"><a href="#mytab-tab1" data-toggle="tab">Tab 2</a></li>',
-            $html,
-        );
+        $this->assertStringNotContainsString('<li class="active"><a href="#mytab-tab0" data-toggle="tab">Tab 1</a></li>', $html);
+        $this->assertStringContainsString('<li class="active"><a href="#mytab-tab1" data-toggle="tab">Tab 2</a></li>', $html);
     }
 
-    public function testActivateTab()
+    public function testActivateTab(): void
     {
         $html = Tabs::widget([
-            'id'=>'mytab',
+            'id' => 'mytab',
             'items' => [
                 [
                     'label' => 'Tab 1',
                     'content' => 'some content',
-                    'visible'=>false
+                    'visible' => false
                 ],
                 [
                     'label' => 'Tab 2',
@@ -218,13 +213,10 @@ class TabsTest extends TestCase
                 ]
             ]
         ]);
-        $this->assertStringContainsString(
-            '<li class="active"><a href="#mytab-tab2" data-toggle="tab">Tab 3</a></li>',
-            $html,
-        );
+        $this->assertStringContainsString('<li class="active"><a href="#mytab-tab2" data-toggle="tab">Tab 3</a></li>', $html);
     }
 
-    public function testTemplate()
+    public function testTemplate(): void
     {
         $html = Tabs::widget([
             'template' => '<div class="container-class"><div class="headers-class">{headers}</div><div class="panes-class">{panes}</div></div>',

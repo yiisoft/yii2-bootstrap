@@ -24,6 +24,8 @@ composer.phar
 phpunit.phar
 # local phpunit config
 /phpunit.xml
+.phpunit.result.cache
+coverage.xml
 
 /tests/runtime
 /tests/data/config.local.php

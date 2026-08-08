@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap;
 
 use yii\bootstrap\Dropdown;
@@ -10,7 +11,7 @@ use yii\bootstrap\Dropdown;
  */
 class DropdownTest extends TestCase
 {
-    public function testIds()
+    public function testIds(): void
     {
         Dropdown::$counter = 0;
         $out = Dropdown::widget(
@@ -48,7 +49,7 @@ EXPECTED;
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    public function testSubMenuOptions()
+    public function testSubMenuOptions(): void
     {
         Dropdown::$counter = 0;
         $out = Dropdown::widget(
