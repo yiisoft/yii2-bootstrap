@@ -34,7 +34,7 @@
     "require": {
         "php": ">=7.4",
         "yiisoft/yii2": "^2.0.54",
-        "bower-asset/bootstrap": "3.4.* | 3.3.* | 3.2.* | 3.1.*"
+        "bower-asset/bootstrap": "^5.3.8"
     },
     "require-dev": {
         "yiisoft/yii2-coding-standards": "~3.0",
