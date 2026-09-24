@@ -115,7 +115,7 @@ class CollapseTest extends TestCase
 </div>
 
 HTML
-        , $output);
+            , $output);
     }
 
     public function testLabelKeys(): void
@@ -163,7 +163,7 @@ HTML
 </div>
 
 HTML
-        , $output);
+            , $output);
     }
 
     public function invalidItemsProvider(): array
@@ -219,7 +219,7 @@ HTML
 </div>
 
 HTML
-        , $output);
+            , $output);
     }
 
     public function testAutoCloseItems(): void
