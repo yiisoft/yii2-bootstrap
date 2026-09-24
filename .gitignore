@@ -28,3 +28,7 @@ phpunit.phar
 coverage.xml
 
 /tests/runtime
+
+# PHP CS Fixer
+.php-cs-fixer.php
+.php-cs-fixer.cache

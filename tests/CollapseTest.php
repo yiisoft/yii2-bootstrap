@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @link https://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ */
+
 namespace yiiunit\extensions\bootstrap;
 
 use yii\base\DynamicModel;
@@ -109,7 +115,7 @@ class CollapseTest extends TestCase
 </div>
 
 HTML
-        , $output);
+            , $output);
     }
 
     public function testLabelKeys(): void
@@ -157,7 +163,7 @@ HTML
 </div>
 
 HTML
-        , $output);
+            , $output);
     }
 
     public function invalidItemsProvider(): array
@@ -213,7 +219,7 @@ HTML
 </div>
 
 HTML
-        , $output);
+            , $output);
     }
 
     public function testAutoCloseItems(): void
