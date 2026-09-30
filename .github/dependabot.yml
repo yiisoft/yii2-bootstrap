@@ -28,5 +28,5 @@ updates:
     versioning-strategy: increase-if-necessary
     ignore:
       # This extension supports Bootstrap 3 only.
+      # Ignore all updates until Dependabot respects version ignores for Asset Packagist.
       - dependency-name: "bower-asset/bootstrap"
-        versions: [">=4.0.0"]
