@@ -37,7 +37,7 @@
         "bower-asset/bootstrap": "3.4.* | 3.3.* | 3.2.* | 3.1.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.6",
+        "phpunit/phpunit": "^13.4",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-phpunit": "^2.0",
         "rector/rector": "^2.6",
